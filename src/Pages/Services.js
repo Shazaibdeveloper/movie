@@ -290,23 +290,23 @@ const Services = () => {
 		<div class="play2rir">
 		 <h6 class="fw-normal">Website Design <span class="pull-right">92%</span></h6>
          <div class="progress">
-  <div class="progress-bar" role="progressbar" style="width: 92%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+  <div class="progress-bar" role="progressbar" style={{ width: "92%"}} aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
 </div>
           <h6 class="fw-normal mt-4">Graphic Design <span class="pull-right">73%</span></h6>
          <div class="progress">
-  <div class="progress-bar" role="progressbar" style="width: 73%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+  <div class="progress-bar" role="progressbar" style={{ width: "73%"}} aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
 </div>
           <h6 class="fw-normal mt-4">Javascript <span class="pull-right">90%</span></h6>
          <div class="progress">
-  <div class="progress-bar" role="progressbar" style="width: 90%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+  <div class="progress-bar" role="progressbar" style={{ width: "90%"}}aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
 </div>
           <h6 class="fw-normal mt-4">Development <span class="pull-right">83%</span></h6>
          <div class="progress">
-  <div class="progress-bar" role="progressbar" style="width: 83%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+  <div class="progress-bar" role="progressbar" style={{ width: "83%"}} aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
 </div>
  <h6 class="fw-normal mt-4">Ms Office <span class="pull-right">79%</span></h6>
          <div class="progress">
-  <div class="progress-bar" role="progressbar" style="width: 79%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+  <div class="progress-bar" role="progressbar" style={{ width: "79%"}} aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
 </div>
  
 		</div>
