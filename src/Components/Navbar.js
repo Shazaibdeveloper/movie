@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 const Navbar = () => {
   return (
@@ -8,7 +9,7 @@ const Navbar = () => {
  <div class="row top_1">
   <div class="col-md-3">
    <div class="top_1l pt-1">
-    <h3 class="mb-0"><a class="text-white" href="index.html"><i class="fa fa-video-camera col_red me-1"></i> Planet</a></h3>
+    <h3 class="mb-0"><Link class="text-white" to="/home"><i class="fa fa-video-camera col_red me-1"></i> Planet</Link></h3>
    </div>
   </div>
   <div class="col-md-5">
@@ -47,40 +48,32 @@ const Navbar = () => {
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav mb-0">
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="index.html">Home</a>
+          <Link class="nav-link active" aria-current="page" to="/home">Home</Link>
         </li>
 		<li class="nav-item">
-          <a class="nav-link" href="about.html">About Us</a>
+          <Link class="nav-link" to="/about">About Us</Link>
         </li>
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            Blog
-          </a>
-          <ul class="dropdown-menu drop_1" aria-labelledby="navbarDropdown">
-            <li><a class="dropdown-item" href="blog.html">Blog</a></li>
-            <li><a class="dropdown-item border-0" href="blog_detail.html">Blog Detail</a></li>
-          </ul>
+        
+		<li class="nav-item">
+          <Link class="nav-link" to="/services">Services</Link>
         </li>
 		<li class="nav-item">
-          <a class="nav-link" href="services.html">Services</a>
-        </li>
-		<li class="nav-item">
-          <a class="nav-link" href="team.html">Team</a>
+          <Link class="nav-link" to="/team">Team</Link>
         </li>
 		<li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
             Pages
           </a>
           <ul class="dropdown-menu drop_1" aria-labelledby="navbarDropdown">
-            <li><a class="dropdown-item" href="about.html">About Us</a></li>
-            <li><a class="dropdown-item" href="services.html">Services</a></li>
-			<li><a class="dropdown-item" href="team.html">Team</a></li>
-            <li><a class="dropdown-item border-0" href="contact.html">Contact</a></li>
+            <li><Link class="dropdown-item" to="/about">About Us</Link></li>
+            <li><Link class="dropdown-item" to="/services">Services</Link></li>
+			<li><Link class="dropdown-item" to="/team">Team</Link></li>
+            <li><Link class="dropdown-item border-0" to="/contact">Contact</Link></li>
           </ul>
         </li>
 		
 		<li class="nav-item">
-          <a class="nav-link" href="contact.html">Contact Us</a>
+          <Link class="nav-link" to="/contact">Contact Us</Link>
         </li>
       </ul>
     </div>
