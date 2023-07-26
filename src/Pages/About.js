@@ -1,10 +1,11 @@
 import React from 'react'
+import Navbar from '../Components/Navbar'
 
 const About = () => {
   return (
 	 <>
 	  
- 
+ <Navbar/>
 <section id="center" class="center_o pt-2 pb-2">
  <div class="container-xl">
   <div class="row center_o1">

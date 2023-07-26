@@ -9,18 +9,20 @@ import Error from "./Pages/Error";
 
 function App() {
   return (
+   <>
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<Home />}>
+        <Route path="/" element={<Home />} />
           <Route index element={<Home />} />
-           <Route path="about" element={<About />} />
-          <Route path="contact" element={<Contact />} />
-          <Route path="services" element={<Services />} />
-          <Route path="team" element={<Team />} />
+           <Route path="/about" element={<About />} />
+          <Route path="/contact" element={<Contact />} />
+          <Route path="/services" element={<Services />} />
+          <Route path="/team" element={<Team />} />
           <Route path="*" element={<Error />} />
-        </Route>
+     
       </Routes>
     </BrowserRouter>
+   </>
   );
 }
 
