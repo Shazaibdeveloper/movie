@@ -95,58 +95,14 @@ const Navbar = () => {
                   </Link>
                 </li>
                 <li class="nav-item">
-                  <Link class="nav-link" to="/about">
-                    About Us
+                  <Link class="nav-link" to="/movies">
+                    Movies
                   </Link>
                 </li>
 
                 <li class="nav-item">
-                  <Link class="nav-link" to="/services">
-                    Services
-                  </Link>
-                </li>
-
-                <li class="nav-item dropdown">
-                  <a
-                    class="nav-link dropdown-toggle"
-                    href="#"
-                    id="navbarDropdown"
-                    role="button"
-                    data-bs-toggle="dropdown"
-                    aria-expanded="false"
-                  >
-                    Pages
-                  </a>
-                  <ul
-                    class="dropdown-menu drop_1"
-                    aria-labelledby="navbarDropdown"
-                  >
-                    <li>
-                      <Link class="dropdown-item" to="/about">
-                        About Us
-                      </Link>
-                    </li>
-                    <li>
-                      <Link class="dropdown-item" to="/services">
-                        Services
-                      </Link>
-                    </li>
-                    <li>
-                      <Link class="dropdown-item" to="/team">
-                        Team
-                      </Link>
-                    </li>
-                    <li>
-                      <Link class="dropdown-item border-0" to="/contact">
-                        Contact
-                      </Link>
-                    </li>
-                  </ul>
-                </li>
-
-                <li class="nav-item">
-                  <Link class="nav-link" to="/contact">
-                    Contact Us
+                  <Link class="nav-link" to="/tvseries">
+                    Tv Series
                   </Link>
                 </li>
               </ul>
