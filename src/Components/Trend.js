@@ -1,6 +1,30 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 
 const Trend = () => {
+  const [moviesData, setMoviesData] = useState(null); // Initialize state to store fetched data
+
+  async function fetchMovies() {
+    const apiUrl = `https://api.themoviedb.org/3/discover/movie?api_key=0a4ea0f6b58dd38f569836183f3dbf13`;
+
+    try {
+      const response = await fetch(apiUrl);
+
+      if (!response.ok) {
+        throw new Error(`API request failed with status ${response.status}`);
+      }
+
+      const data = await response.json();
+      setMoviesData(data); // Store the fetched data in the component's state
+    } catch (error) {
+      console.error("Error fetching data:", error);
+    }
+  }
+
+  useEffect(() => {
+    // Use useEffect to fetch data when the component mounts
+    fetchMovies();
+  }, []); // Empty dependency array to fetch data only once when the component mounts
+
   return (
     <>
       <section id="trend" className="pt-4 pb-5">
@@ -25,6 +49,7 @@ const Trend = () => {
               </div>
             </div>
           </div>
+
           <div className="row trend_2 mt-4">
             <div
               id="carouselExampleCaptions1"
@@ -34,178 +59,47 @@ const Trend = () => {
               <div className="carousel-inner">
                 <div className="carousel-item active">
                   <div className="trend_2i row">
-                    <div className="col-md-3 col-6">
-                      <div className="trend_2im clearfix position-relative">
-                        <div className="trend_2im1 clearfix">
-                          <div className="grid">
-                            <figure className="effect-jazz mb-0">
-                              <a href="#">
-                                <img
-                                  src="img/4.jpg"
-                                  className="w-100"
-                                  alt="img25"
-                                />
+                    {moviesData ? (
+                      moviesData.results.map((movie) => (
+                        // Render each movie from the API
+                        <div className="col-md-3 col-6 my-4" key={movie.id}>
+                          <div className="trend_2im clearfix position-relative">
+                            <div className="trend_2im1 clearfix">
+                              <div className="grid">
+                                <figure className="effect-jazz mb-0">
+                                  <a href="#">
+                                    <img
+                                      src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}
+                                      className="w-100"
+                                      alt={movie.title}
+                                    />
+                                  </a>
+                                </figure>
+                              </div>
+                            </div>
+                          </div>
+                          <div className="trend_2ilast bg_grey p-3 clearfix">
+                            <h5 className="title">
+                              <a className="col_red " href="#">
+                                {movie.title}
                               </a>
-                            </figure>
+                            </h5>
+                            <p className="mb-2 dotted-para">{movie.overview}</p>
+                            <span className="col_red">
+                              <i className="fa fa-star"></i>
+                              <i className="fa fa-star"></i>
+                              <i className="fa fa-star"></i>
+                              <i className="fa fa-star"></i>
+                              <i className="fa fa-star"></i>
+                            </span>
+                            <p className="mb-0">{movie.popularity} Views</p>
                           </div>
                         </div>
-                        <div className="trend_2im2 clearfix text-center position-absolute w-100 top-0">
-                          <span className="fs-1">
-                            <a className="col_red" href="#">
-                              <i className="fa fa-youtube-play"></i>
-                            </a>
-                          </span>
-                        </div>
-                      </div>
-                      <div className="trend_2ilast bg_grey p-3 clearfix">
-                        <h5>
-                          <a className="col_red" href="#">
-                            Semper
-                          </a>
-                        </h5>
-                        <p className="mb-2">
-                          A father travels from Oklahoma to France to help
-                          his...
-                        </p>
-                        <span className="col_red">
-                          <i className="fa fa-star"></i>
-                          <i className="fa fa-star"></i>
-                          <i className="fa fa-star"></i>
-                          <i className="fa fa-star"></i>
-                          <i className="fa fa-star"></i>
-                        </span>
-                        <p className="mb-0">1 Views</p>
-                      </div>
-                    </div>
-                    <div className="col-md-3 col-6">
-                      <div className="trend_2im clearfix position-relative">
-                        <div className="trend_2im1 clearfix">
-                          <div className="grid">
-                            <figure className="effect-jazz mb-0">
-                              <a href="#">
-                                <img
-                                  src="img/5.jpg"
-                                  className="w-100"
-                                  alt="img25"
-                                />
-                              </a>
-                            </figure>
-                          </div>
-                        </div>
-                        <div className="trend_2im2 clearfix text-center position-absolute w-100 top-0">
-                          <span className="fs-1">
-                            <a className="col_red" href="#">
-                              <i className="fa fa-youtube-play"></i>
-                            </a>
-                          </span>
-                        </div>
-                      </div>
-                      <div className="trend_2ilast bg_grey p-3 clearfix">
-                        <h5>
-                          <a className="col_red" href="#">
-                            Dapibus
-                          </a>
-                        </h5>
-                        <p className="mb-2">
-                          A father travels from Oklahoma to France to help
-                          his...
-                        </p>
-                        <span className="col_red">
-                          <i className="fa fa-star"></i>
-                          <i className="fa fa-star"></i>
-                          <i className="fa fa-star"></i>
-                          <i className="fa fa-star"></i>
-                          <i className="fa fa-star"></i>
-                        </span>
-                        <p className="mb-0">1 Views</p>
-                      </div>
-                    </div>
-                    <div className="col-md-3 col-6">
-                      <div className="trend_2im clearfix position-relative">
-                        <div className="trend_2im1 clearfix">
-                          <div className="grid">
-                            <figure className="effect-jazz mb-0">
-                              <a href="#">
-                                <img
-                                  src="img/6.jpg"
-                                  className="w-100"
-                                  alt="img25"
-                                />
-                              </a>
-                            </figure>
-                          </div>
-                        </div>
-                        <div className="trend_2im2 clearfix text-center position-absolute w-100 top-0">
-                          <span className="fs-1">
-                            <a className="col_red" href="#">
-                              <i className="fa fa-youtube-play"></i>
-                            </a>
-                          </span>
-                        </div>
-                      </div>
-                      <div className="trend_2ilast bg_grey p-3 clearfix">
-                        <h5>
-                          <a className="col_red" href="#">
-                            Ipsum
-                          </a>
-                        </h5>
-                        <p className="mb-2">
-                          A father travels from Oklahoma to France to help
-                          his...
-                        </p>
-                        <span className="col_red">
-                          <i className="fa fa-star"></i>
-                          <i className="fa fa-star"></i>
-                          <i className="fa fa-star"></i>
-                          <i className="fa fa-star"></i>
-                          <i className="fa fa-star"></i>
-                        </span>
-                        <p className="mb-0">1 Views</p>
-                      </div>
-                    </div>
-                    <div className="col-md-3 col-6">
-                      <div className="trend_2im clearfix position-relative">
-                        <div className="trend_2im1 clearfix">
-                          <div className="grid">
-                            <figure className="effect-jazz mb-0">
-                              <a href="#">
-                                <img
-                                  src="img/7.jpg"
-                                  className="w-100"
-                                  alt="img25"
-                                />
-                              </a>
-                            </figure>
-                          </div>
-                        </div>
-                        <div className="trend_2im2 clearfix text-center position-absolute w-100 top-0">
-                          <span className="fs-1">
-                            <a className="col_red" href="#">
-                              <i className="fa fa-youtube-play"></i>
-                            </a>
-                          </span>
-                        </div>
-                      </div>
-                      <div className="trend_2ilast bg_grey p-3 clearfix">
-                        <h5>
-                          <a className="col_red" href="#">
-                            Lorem
-                          </a>
-                        </h5>
-                        <p className="mb-2">
-                          A father travels from Oklahoma to France to help
-                          his...
-                        </p>
-                        <span className="col_red">
-                          <i className="fa fa-star"></i>
-                          <i className="fa fa-star"></i>
-                          <i className="fa fa-star"></i>
-                          <i className="fa fa-star"></i>
-                          <i className="fa fa-star"></i>
-                        </span>
-                        <p className="mb-0">1 Views</p>
-                      </div>
-                    </div>
+                      ))
+                    ) : (
+                      // Render a loading message or spinner while data is being fetched
+                      <div>Loading...</div>
+                    )}
                   </div>
                 </div>
               </div>
