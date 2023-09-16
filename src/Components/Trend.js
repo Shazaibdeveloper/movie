@@ -4,7 +4,8 @@ const Trend = () => {
   const [moviesData, setMoviesData] = useState(null); // Initialize state to store fetched data
 
   async function fetchMovies() {
-    const apiUrl = `https://api.themoviedb.org/3/discover/movie?api_key=0a4ea0f6b58dd38f569836183f3dbf13`;
+    const api = process.env.API_KEY;
+    const apiUrl = `https://api.themoviedb.org/3/discover/movie?api_key=${api}`;
 
     try {
       const response = await fetch(apiUrl);
