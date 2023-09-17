@@ -5,7 +5,7 @@ const Tv = () => {
 
   async function fetchMovies() {
     const api = process.env.API_KEY;
-    const apiUrl = `https://api.themoviedb.org/3/discover/tv?api_key=${api}`;
+    const apiUrl = `https://api.themoviedb.org/3/discover/tv?api_key=0a4ea0f6b58dd38f569836183f3dbf13`;
 
     try {
       const response = await fetch(apiUrl);
@@ -82,10 +82,17 @@ const Tv = () => {
                           <div className="trend_2ilast bg_grey p-3 clearfix">
                             <h5 className="title">
                               <a className="col_red " href="#">
-                                {movie.title}
+                                {movie.name}
                               </a>
                             </h5>
-                            <p className="mb-2 dotted-para">{movie.overview}</p>
+                            <p className="mb-2 dotted-para">
+                              {" "}
+                              {!movie.overview ? (
+                                <p>we are updating...</p>
+                              ) : (
+                                movie.overview
+                              )}
+                            </p>
                             <span className="col_red">
                               <i className="fa fa-star"></i>
                               <i className="fa fa-star"></i>

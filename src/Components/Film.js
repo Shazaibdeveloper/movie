@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from "react";
 
-const Trend = () => {
+const Film = () => {
   const [moviesData, setMoviesData] = useState(null); // Initialize state to store fetched data
 
   async function fetchMovies() {
     const api = process.env.API_KEY;
-    const apiUrl = `https://api.themoviedb.org/3/discover/movie?api_key=${api}`;
+    const apiUrl = `https://api.themoviedb.org/3/discover/movie?api_key=0a4ea0f6b58dd38f569836183f3dbf13`;
 
     try {
       const response = await fetch(apiUrl);
@@ -63,7 +63,11 @@ const Trend = () => {
                     {moviesData ? (
                       moviesData.results.map((movie) => (
                         // Render each movie from the API
-                        <div className="col-md-3 col-6 my-4" key={movie.id}>
+                        <div
+                          className="col-md-3 col-6 my-4"
+                          key={movie.id}
+                          id={movie.id}
+                        >
                           <div className="trend_2im clearfix position-relative">
                             <div className="trend_2im1 clearfix">
                               <div className="grid">
@@ -112,4 +116,4 @@ const Trend = () => {
   );
 };
 
-export default Trend;
+export default Film;

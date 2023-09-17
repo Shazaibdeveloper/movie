@@ -1,7 +1,10 @@
 import React from "react";
 import Navbar from "../Components/Navbar";
 import Footer from "../Components/Footer";
-import Trend from "../Components/Trend";
+import img1 from "../Images/img1.jpg";
+import img2 from "../Images/img2.webp";
+import img3 from "../Images/img3.jpg";
+import Film from "../Components/Film";
 
 const Home = () => {
   return (
@@ -39,7 +42,7 @@ const Home = () => {
           </div>
           <div className="carousel-inner">
             <div className="carousel-item active">
-              <img src="img/1.jpg" className="d-block w-100" alt="..." />
+              <img src={img1} className="d-block w-100" alt="..." />
               <div className="carousel-caption d-md-block">
                 <h1 className="font_60"> Entertainment Planet</h1>
                 <h6 className="mt-3">
@@ -82,7 +85,7 @@ const Home = () => {
               </div>
             </div>
             <div className="carousel-item">
-              <img src="img/2.jpg" className="d-block w-100" alt="..." />
+              <img src={img2} className="d-block w-100" alt="..." />
               <div className="carousel-caption d-md-block">
                 <h1 className="font_60"> Lorem Semper Nulla</h1>
                 <h6 className="mt-3">
@@ -125,7 +128,7 @@ const Home = () => {
               </div>
             </div>
             <div className="carousel-item">
-              <img src="img/3.jpg" className="d-block w-100" alt="..." />
+              <img src={img3} className="d-block w-100" alt="..." />
               <div className="carousel-caption d-md-block">
                 <h1 className="font_60"> Eget Diam Ipsum</h1>
                 <h6 className="mt-3">
@@ -195,7 +198,7 @@ const Home = () => {
         </div>
       </section>
 
-      <Trend />
+      <Film />
       <Footer />
     </>
   );
