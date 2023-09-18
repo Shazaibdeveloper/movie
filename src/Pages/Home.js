@@ -5,6 +5,7 @@ import img1 from "../Images/img1.jpg";
 import img2 from "../Images/img2.webp";
 import img3 from "../Images/img3.jpg";
 import Film from "../Components/Film";
+import Upcomming from "../Components/Upcomming";
 
 const Home = () => {
   return (
@@ -199,6 +200,7 @@ const Home = () => {
       </section>
 
       <Film />
+      <Upcomming />
       <Footer />
     </>
   );
