@@ -13,8 +13,8 @@ const Tv = () => {
     slidesToScroll: 4,
   };
   async function fetchMovies() {
-    const api = process.env.API_KEY;
-    const apiUrl = `https://api.themoviedb.org/3/discover/tv?api_key=0a4ea0f6b58dd38f569836183f3dbf13`;
+    const api = process.env.REACT_APP_API_KEY;
+    const apiUrl = `https://api.themoviedb.org/3/discover/tv?api_key=${api}`;
 
     try {
       const response = await fetch(apiUrl);
@@ -67,12 +67,19 @@ const Tv = () => {
               data-bs-ride="carousel"
             >
               <div className="trend_2i row">
-                <Slider {...settings}>
-                  {moviesData ? (
-                    moviesData.results.map((movie) => (
+                {moviesData === null ? (
+                  // Render a loading message or spinner while data is being fetched
+                  <div>Loading...</div>
+                ) : (
+                  // Render movie data once it's available
+                  <Slider {...settings}>
+                    {moviesData.results.map((movie) => (
                       // Render each movie from the API
-
-                      <div className="col-md-12 col-6 px-3 my-4" key={movie.id}>
+                      <div
+                        className="col-md-12 col-6 px-3 my-4"
+                        key={movie.id}
+                        id={movie.id}
+                      >
                         <div className="trend_2im clearfix position-relative">
                           <div className="trend_2im1 clearfix">
                             <div className="grid">
@@ -81,7 +88,7 @@ const Tv = () => {
                                   <img
                                     src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}
                                     className="w-100"
-                                    alt={movie.title}
+                                    alt={movie.name}
                                   />
                                 </a>
                               </figure>
@@ -94,14 +101,7 @@ const Tv = () => {
                               {movie.name}
                             </a>
                           </h5>
-                          <p className="mb-2 dotted-para">
-                            {" "}
-                            {!movie.overview ? (
-                              <p>we are updating...</p>
-                            ) : (
-                              movie.overview
-                            )}
-                          </p>
+                          <p className="mb-2 dotted-para">{movie.overview}</p>
                           <span className="col_red">
                             <i className="fa fa-star"></i>
                             <i className="fa fa-star"></i>
@@ -112,12 +112,9 @@ const Tv = () => {
                           <p className="mb-0">{movie.popularity} Views</p>
                         </div>
                       </div>
-                    ))
-                  ) : (
-                    // Render a loading message or spinner while data is being fetched
-                    <div>Loading...</div>
-                  )}
-                </Slider>
+                    ))}
+                  </Slider>
+                )}
               </div>
             </div>
           </div>

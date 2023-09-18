@@ -13,8 +13,8 @@ const Film = () => {
     slidesToScroll: 4,
   };
   async function fetchMovies() {
-    const api = process.env.API_KEY;
-    const apiUrl = `https://api.themoviedb.org/3/discover/movie?api_key=0a4ea0f6b58dd38f569836183f3dbf13`;
+    const api_key = process.env.REACT_APP_API_KEY;
+    const apiUrl = `https://api.themoviedb.org/3/discover/movie?api_key=${api_key}`;
 
     try {
       const response = await fetch(apiUrl);
@@ -69,9 +69,13 @@ const Film = () => {
               <div className="carousel-inner">
                 <div className="carousel-item active">
                   <div className="trend_2i row">
-                    <Slider {...settings}>
-                      {moviesData ? (
-                        moviesData.results.map((movie) => (
+                    {moviesData === null ? (
+                      // Render a loading message or spinner while data is being fetched
+                      <div>Loading...</div>
+                    ) : (
+                      // Render movie data once it's available
+                      <Slider {...settings}>
+                        {moviesData.results.map((movie) => (
                           // Render each movie from the API
                           <div
                             className="col-md-12 col-6 px-3 my-4"
@@ -112,12 +116,9 @@ const Film = () => {
                               <p className="mb-0">{movie.popularity} Views</p>
                             </div>
                           </div>
-                        ))
-                      ) : (
-                        // Render a loading message or spinner while data is being fetched
-                        <div>Loading...</div>
-                      )}
-                    </Slider>
+                        ))}
+                      </Slider>
+                    )}
                   </div>
                 </div>
               </div>
