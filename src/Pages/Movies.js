@@ -1,13 +1,13 @@
 import React from "react";
 import Navbar from "../Components/Navbar";
 import Footer from "../Components/Footer";
-import Film from "../Components/Film";
+import MovieComp from "../Components/MovieComp";
 
 const Movies = () => {
   return (
     <>
       <Navbar />
-      <Film />
+      <MovieComp />
       <Footer />
     </>
   );

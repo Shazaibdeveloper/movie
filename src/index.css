@@ -25,3 +25,8 @@ code {
   text-overflow: ellipsis; 
 }
 
+.pagination li a {
+  background: #191a1d !important;
+  border: none;
+  color: red;
+}
