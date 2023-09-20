@@ -1,32 +1,17 @@
 import React, { useEffect, useState } from "react";
 import MoviePagi from "./MoviePagi";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchMovies } from "../Redux/moviesSlice";
 
 const MovieComp = () => {
-  const [moviesData, setMoviesData] = useState(null); // Initialize state to store fetched data
-
-  async function fetchMovies() {
-    const api_key = process.env.REACT_APP_API_KEY;
-    const apiUrl = `https://api.themoviedb.org/3/discover/movie?api_key=${api_key}&page=1`;
-
-    try {
-      const response = await fetch(apiUrl);
-
-      if (!response.ok) {
-        throw new Error(`API request failed with status ${response.status}`);
-      }
-
-      const data = await response.json();
-      setMoviesData(data); // Store the fetched data in the component's state
-    } catch (error) {
-      console.error("Error fetching data:", error);
-    }
-  }
+  const dispatch = useDispatch();
+  const movies = useSelector((state) => state.movies.movies);
+  const currentPage = useSelector((state) => state.movies.currentPage);
+  const totalPages = useSelector((state) => state.movies.totalPages);
 
   useEffect(() => {
-    // Use useEffect to fetch data when the component mounts
-    fetchMovies();
-  }, []); // Empty dependency array to fetch data only once when the component mounts
-
+    dispatch(fetchMovies(currentPage));
+  }, [dispatch, currentPage]);
   return (
     <>
       <section id="trend" className="pt-4 pb-5">
@@ -61,10 +46,10 @@ const MovieComp = () => {
               <div className="carousel-inner">
                 <div className="carousel-item active">
                   <div className="trend_2i row">
-                    {moviesData ? (
+                    {movies ? (
                       // Render the component when moviesData is not null
                       <div className="trend_2i row">
-                        {moviesData.results.map((movie) => (
+                        {movies.map((movie) => (
                           <div
                             className="col-md-3 col-6 px-3 my-4"
                             key={movie.id}
