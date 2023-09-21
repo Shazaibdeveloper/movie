@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { fetchMovies } from "../Redux/moviesSlice";
+import { fetchtv } from "../Redux/tvSlice";
 
-const MoviePagi = () => {
+const TvPagi = () => {
   const dispatch = useDispatch();
-  const currentPage = useSelector((state) => state.movies.currentPage);
-  const totalPages = useSelector((state) => state.movies.totalPages);
+  const currentPage = useSelector((state) => state.tv.currentPage);
+  const totalPages = useSelector((state) => state.tv.totalPages);
 
   const [visiblePages, setVisiblePages] = useState([1]); // Initial visible page
 
@@ -16,7 +16,7 @@ const MoviePagi = () => {
 
   const handlePageChange = (newPage) => {
     if (newPage >= 1 && newPage <= totalPages) {
-      dispatch(fetchMovies(newPage));
+      dispatch(fetchtv(newPage));
     }
   };
 
@@ -100,4 +100,4 @@ const MoviePagi = () => {
   );
 };
 
-export default MoviePagi;
+export default TvPagi;
