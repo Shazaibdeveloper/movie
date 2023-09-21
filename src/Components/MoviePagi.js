@@ -7,7 +7,9 @@ const MoviePagi = () => {
   const currentPage = useSelector((state) => state.movies.currentPage);
   const totalPages = useSelector((state) => state.movies.totalPages);
 
-  const [visiblePages, setVisiblePages] = useState([1]); // Initial visible page
+  const [visiblePages, setVisiblePages] = useState(
+    [...Array(10).keys()].map((page) => page + 1)
+  ); // Initial visible pages 1 to 10 // Initial visible page
 
   const handlePageChange = (newPage) => {
     if (newPage >= 1 && newPage <= totalPages) {
