@@ -1,6 +1,40 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import Slider from "react-slick";
 
 const Stream = () => {
+  const [moviesData, setMoviesData] = useState(null); // Initialize state to store fetched data
+  var settings = {
+    dots: true,
+    pauseOnHover: true,
+    infinite: true,
+    speed: 2000,
+    autoplay: true,
+    slidesToShow: 5,
+    slidesToScroll: 5,
+  };
+  async function fetchMovies() {
+    const api_key = process.env.REACT_APP_API_KEY;
+    const apiUrl = `https://api.themoviedb.org/3/movie/popular?api_key=${api_key}`;
+
+    try {
+      const response = await fetch(apiUrl);
+
+      if (!response.ok) {
+        throw new Error(`API request failed with status ${response.status}`);
+      }
+
+      const data = await response.json();
+      setMoviesData(data); // Store the fetched data in the component's state
+    } catch (error) {
+      console.error("Error fetching data:", error);
+    }
+  }
+
+  useEffect(() => {
+    // Use useEffect to fetch data when the component mounts
+    fetchMovies();
+  }, []); // Empty dependency array to fetch data only once when the component mounts
+
   return (
     <>
       <section id="stream" class="pb-5 pt-4">
@@ -31,349 +65,52 @@ const Stream = () => {
               class="carousel slide"
               data-bs-ride="carousel"
             >
-              <div class="carousel-indicators">
-                <button
-                  type="button"
-                  data-bs-target="#carouselExampleCaptions4"
-                  data-bs-slide-to="0"
-                  class="active"
-                  aria-label="Slide 1"
-                  aria-current="true"
-                ></button>
-                <button
-                  type="button"
-                  data-bs-target="#carouselExampleCaptions4"
-                  data-bs-slide-to="1"
-                  aria-label="Slide 2"
-                  class=""
-                ></button>
-              </div>
               <div class="carousel-inner">
                 <div class="carousel-item active">
                   <div class="trend_2i row">
-                    <div class="col">
-                      <div class="trend_2im clearfix position-relative">
-                        <div class="trend_2im1 clearfix">
-                          <div class="grid">
-                            <figure class="effect-jazz mb-0">
-                              <a href="#">
-                                <img
-                                  src="img/4.jpg"
-                                  class="w-100"
-                                  alt="img25"
-                                />
-                              </a>
-                            </figure>
-                          </div>
-                        </div>
-                        <div class="trend_2im2 clearfix  position-absolute w-100 top-0">
-                          <h5>
-                            <a class="col_red" href="#">
-                              Semper
-                            </a>
-                          </h5>
-                          <span class="col_red">
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                          </span>
-                          <p class="mb-0">2 Views</p>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="col">
-                      <div class="trend_2im clearfix position-relative">
-                        <div class="trend_2im1 clearfix">
-                          <div class="grid">
-                            <figure class="effect-jazz mb-0">
-                              <a href="#">
-                                <img
-                                  src="img/5.jpg"
-                                  class="w-100"
-                                  alt="img25"
-                                />
-                              </a>
-                            </figure>
-                          </div>
-                        </div>
-                        <div class="trend_2im2 clearfix  position-absolute w-100 top-0">
-                          <h5>
-                            <a class="col_red" href="#">
-                              Semper
-                            </a>
-                          </h5>
-                          <span class="col_red">
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                          </span>
-                          <p class="mb-0">2 Views</p>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="col">
-                      <div class="trend_2im clearfix position-relative">
-                        <div class="trend_2im1 clearfix">
-                          <div class="grid">
-                            <figure class="effect-jazz mb-0">
-                              <a href="#">
-                                <img
-                                  src="img/6.jpg"
-                                  class="w-100"
-                                  alt="img25"
-                                />
-                              </a>
-                            </figure>
-                          </div>
-                        </div>
-                        <div class="trend_2im2 clearfix  position-absolute w-100 top-0">
-                          <h5>
-                            <a class="col_red" href="#">
-                              Semper
-                            </a>
-                          </h5>
-                          <span class="col_red">
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                          </span>
-                          <p class="mb-0">2 Views</p>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="col">
-                      <div class="trend_2im clearfix position-relative">
-                        <div class="trend_2im1 clearfix">
-                          <div class="grid">
-                            <figure class="effect-jazz mb-0">
-                              <a href="#">
-                                <img
-                                  src="img/7.jpg"
-                                  class="w-100"
-                                  alt="img25"
-                                />
-                              </a>
-                            </figure>
-                          </div>
-                        </div>
-                        <div class="trend_2im2 clearfix  position-absolute w-100 top-0">
-                          <h5>
-                            <a class="col_red" href="#">
-                              Semper
-                            </a>
-                          </h5>
-                          <span class="col_red">
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                          </span>
-                          <p class="mb-0">2 Views</p>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="col">
-                      <div class="trend_2im clearfix position-relative">
-                        <div class="trend_2im1 clearfix">
-                          <div class="grid">
-                            <figure class="effect-jazz mb-0">
-                              <a href="#">
-                                <img
-                                  src="img/8.jpg"
-                                  class="w-100"
-                                  alt="img25"
-                                />
-                              </a>
-                            </figure>
-                          </div>
-                        </div>
-                        <div class="trend_2im2 clearfix  position-absolute w-100 top-0">
-                          <h5>
-                            <a class="col_red" href="#">
-                              Semper
-                            </a>
-                          </h5>
-                          <span class="col_red">
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                          </span>
-                          <p class="mb-0">2 Views</p>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="carousel-item">
-                  <div class="trend_2i row">
-                    <div class="col">
-                      <div class="trend_2im clearfix position-relative">
-                        <div class="trend_2im1 clearfix">
-                          <div class="grid">
-                            <figure class="effect-jazz mb-0">
-                              <a href="#">
-                                <img
-                                  src="img/9.jpg"
-                                  class="w-100"
-                                  alt="img25"
-                                />
-                              </a>
-                            </figure>
-                          </div>
-                        </div>
-                        <div class="trend_2im2 clearfix  position-absolute w-100 top-0">
-                          <h5>
-                            <a class="col_red" href="#">
-                              Semper
-                            </a>
-                          </h5>
-                          <span class="col_red">
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                          </span>
-                          <p class="mb-0">2 Views</p>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="col">
-                      <div class="trend_2im clearfix position-relative">
-                        <div class="trend_2im1 clearfix">
-                          <div class="grid">
-                            <figure class="effect-jazz mb-0">
-                              <a href="#">
-                                <img
-                                  src="img/10.jpg"
-                                  class="w-100"
-                                  alt="img25"
-                                />
-                              </a>
-                            </figure>
-                          </div>
-                        </div>
-                        <div class="trend_2im2 clearfix  position-absolute w-100 top-0">
-                          <h5>
-                            <a class="col_red" href="#">
-                              Semper
-                            </a>
-                          </h5>
-                          <span class="col_red">
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                          </span>
-                          <p class="mb-0">2 Views</p>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="col">
-                      <div class="trend_2im clearfix position-relative">
-                        <div class="trend_2im1 clearfix">
-                          <div class="grid">
-                            <figure class="effect-jazz mb-0">
-                              <a href="#">
-                                <img
-                                  src="img/11.jpg"
-                                  class="w-100"
-                                  alt="img25"
-                                />
-                              </a>
-                            </figure>
-                          </div>
-                        </div>
-                        <div class="trend_2im2 clearfix  position-absolute w-100 top-0">
-                          <h5>
-                            <a class="col_red" href="#">
-                              Semper
-                            </a>
-                          </h5>
-                          <span class="col_red">
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                          </span>
-                          <p class="mb-0">2 Views</p>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="col">
-                      <div class="trend_2im clearfix position-relative">
-                        <div class="trend_2im1 clearfix">
-                          <div class="grid">
-                            <figure class="effect-jazz mb-0">
-                              <a href="#">
-                                <img
-                                  src="img/4.jpg"
-                                  class="w-100"
-                                  alt="img25"
-                                />
-                              </a>
-                            </figure>
-                          </div>
-                        </div>
-                        <div class="trend_2im2 clearfix  position-absolute w-100 top-0">
-                          <h5>
-                            <a class="col_red" href="#">
-                              Semper
-                            </a>
-                          </h5>
-                          <span class="col_red">
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                          </span>
-                          <p class="mb-0">2 Views</p>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="col">
-                      <div class="trend_2im clearfix position-relative">
-                        <div class="trend_2im1 clearfix">
-                          <div class="grid">
-                            <figure class="effect-jazz mb-0">
-                              <a href="#">
-                                <img
-                                  src="img/5.jpg"
-                                  class="w-100"
-                                  alt="img25"
-                                />
-                              </a>
-                            </figure>
-                          </div>
-                        </div>
-                        <div class="trend_2im2 clearfix  position-absolute w-100 top-0">
-                          <h5>
-                            <a class="col_red" href="#">
-                              Semper
-                            </a>
-                          </h5>
-                          <span class="col_red">
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                          </span>
-                          <p class="mb-0">2 Views</p>
-                        </div>
-                      </div>
+                    <div className="trend_2i row">
+                      {moviesData === null ? (
+                        // Render a loading message or spinner while data is being fetched
+                        <div>Loading...</div>
+                      ) : (
+                        // Render movie data once it's available
+                        <Slider {...settings}>
+                          {moviesData.results.map((movie) => (
+                            <div class="col px-3" key={movie.id} id={movie.id}>
+                              <div class="trend_2im clearfix position-relative">
+                                <div class="trend_2im1 clearfix">
+                                  <div class="grid">
+                                    <figure class="effect-jazz mb-0">
+                                      <a href="#">
+                                        <img
+                                          src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}
+                                          className="w-100"
+                                          alt={movie.title}
+                                        />
+                                      </a>
+                                    </figure>
+                                  </div>
+                                </div>
+                                <div class="trend_2im2 clearfix  position-absolute w-100 bottom-0">
+                                  <h5 className="title">
+                                    <a class="col_red" href="#">
+                                      {movie.title}
+                                    </a>
+                                  </h5>
+                                  <span class="col_red">
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                  </span>
+                                  <p class="mb-0">{movie.popularity} Views</p>
+                                </div>
+                              </div>
+                            </div>
+                          ))}
+                        </Slider>
+                      )}
                     </div>
                   </div>
                 </div>

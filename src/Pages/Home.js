@@ -6,6 +6,7 @@ import img2 from "../Images/img2.webp";
 import img3 from "../Images/img3.jpg";
 import Film from "../Components/Film";
 import Upcomming from "../Components/Upcomming";
+import Stream from "../Components/Stream";
 
 const Home = () => {
   return (
@@ -201,6 +202,7 @@ const Home = () => {
 
       <Film />
       <Upcomming />
+      <Stream />
       <Footer />
     </>
   );
