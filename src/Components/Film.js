@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Slider from "react-slick";
+import LatestFilters from "./LatestFilters";
 
 const Film = () => {
   const [moviesData, setMoviesData] = useState(null); // Initialize state to store fetched data
@@ -41,11 +42,12 @@ const Film = () => {
         <div className="container">
           <div className="row trend_1">
             <div className="col-md-6 col-6">
-              <div className="trend_1l">
+              <div className="trend_1l d-flex">
                 <h4 className="mb-0">
                   <i className="fa fa-youtube-play align-middle col_red me-1"></i>{" "}
                   Latest <span className="col_red">Movies</span>
                 </h4>
+                <LatestFilters />
               </div>
             </div>
             <div className="col-md-6 col-6">
