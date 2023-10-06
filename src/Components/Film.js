@@ -1,9 +1,21 @@
 import React, { useEffect, useState } from "react";
 import Slider from "react-slick";
 import LatestFilters from "./LatestFilters";
+import { useDispatch, useSelector } from "react-redux";
+import { selectMovies, setMovies } from "../Redux/FilterSlice";
+
+const API_URLS = {
+  movies: "https://api.themoviedb.org/3/trending/movie/day",
+  all: "https://api.themoviedb.org/3/trending/all/day",
+  now_playing: "https://api.themoviedb.org/3/movie/now_playing",
+  top_rated: "https://api.themoviedb.org/3/movie/top_rated",
+};
 
 const Film = () => {
-  const [moviesData, setMoviesData] = useState(null); // Initialize state to store fetched data
+  const dispatch = useDispatch();
+  const movies = useSelector(selectMovies);
+  const filter = useSelector((state) => state.movies.filter);
+
   var settings = {
     dots: true,
     pauseOnHover: true,
@@ -13,28 +25,25 @@ const Film = () => {
     slidesToShow: 4,
     slidesToScroll: 4,
   };
-  async function fetchMovies() {
-    const api_key = process.env.REACT_APP_API_KEY;
-    const apiUrl = `https://api.themoviedb.org/3/discover/movie?api_key=${api_key}`;
-
-    try {
-      const response = await fetch(apiUrl);
-
-      if (!response.ok) {
-        throw new Error(`API request failed with status ${response.status}`);
-      }
-
-      const data = await response.json();
-      setMoviesData(data); // Store the fetched data in the component's state
-    } catch (error) {
-      console.error("Error fetching data:", error);
-    }
-  }
 
   useEffect(() => {
-    // Use useEffect to fetch data when the component mounts
+    const fetchMovies = async () => {
+      try {
+        const response = await fetch(
+          API_URLS[filter] + "?api_key=0a4ea0f6b58dd38f569836183f3dbf13"
+        );
+        if (!response.ok) {
+          throw new Error("Network response was not ok");
+        }
+        const data = await response.json();
+        dispatch(setMovies(data.results));
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      }
+    };
+
     fetchMovies();
-  }, []); // Empty dependency array to fetch data only once when the component mounts
+  }, [filter, dispatch]);
 
   return (
     <>
@@ -71,13 +80,13 @@ const Film = () => {
               <div className="carousel-inner">
                 <div className="carousel-item active">
                   <div className="trend_2i row">
-                    {moviesData === null ? (
+                    {movies.results === null ? (
                       // Render a loading message or spinner while data is being fetched
                       <div>Loading...</div>
                     ) : (
                       // Render movie data once it's available
                       <Slider {...settings}>
-                        {moviesData.results.map((movie) => (
+                        {movies.results.map((movie) => (
                           // Render each movie from the API
                           <div
                             className="col-md-12 col-6 px-3 my-4"

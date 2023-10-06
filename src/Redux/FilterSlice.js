@@ -1,7 +1,9 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-  movies: [],
+  movies: {
+    results: [], // Initial empty array to prevent undefined error during mapping
+  },
   filter: "movies", // Default filter option
 };
 
