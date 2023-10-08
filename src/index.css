@@ -43,3 +43,14 @@ code {
   background: #555; 
 }
  
+.filters button:focus{
+ 
+  box-shadow: none !important;
+}
+.heading.filters {
+  margin: 0 0 0 20px;
+}
+
+.red{
+  background: #DE1002;
+}

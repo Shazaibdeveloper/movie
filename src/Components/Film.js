@@ -2,20 +2,22 @@ import React, { useEffect, useState } from "react";
 import Slider from "react-slick";
 import LatestFilters from "./LatestFilters";
 import { useDispatch, useSelector } from "react-redux";
-import { selectMovies, setMovies } from "../Redux/FilterSlice";
+import { selectFilter, selectMovies, setMovies } from "../Redux/FilterSlice";
 
 const API_URLS = {
-  movies: "https://api.themoviedb.org/3/trending/movie/day",
-  all: "https://api.themoviedb.org/3/trending/all/day",
-  now_playing: "https://api.themoviedb.org/3/movie/now_playing",
-  top_rated: "https://api.themoviedb.org/3/movie/top_rated",
+  movies:
+    "https://api.themoviedb.org/3/trending/movie/day?api_key=0a4ea0f6b58dd38f569836183f3dbf13",
+  all: "https://api.themoviedb.org/3/trending/all/day?api_key=0a4ea0f6b58dd38f569836183f3dbf13",
+  now_playing:
+    "https://api.themoviedb.org/3/movie/now_playing?api_key=0a4ea0f6b58dd38f569836183f3dbf13",
+  top_rated:
+    "https://api.themoviedb.org/3/movie/top_rated?api_key=0a4ea0f6b58dd38f569836183f3dbf13",
 };
 
 const Film = () => {
   const dispatch = useDispatch();
   const movies = useSelector(selectMovies);
-  const filter = useSelector((state) => state.movies.filter);
-
+  const filter = useSelector(selectFilter);
   var settings = {
     dots: true,
     pauseOnHover: true,
@@ -29,9 +31,10 @@ const Film = () => {
   useEffect(() => {
     const fetchMovies = async () => {
       try {
-        const response = await fetch(
-          API_URLS[filter] + "?api_key=0a4ea0f6b58dd38f569836183f3dbf13"
-        );
+        const apiUrl = API_URLS[filter];
+        console.log("Fetching data from:", apiUrl);
+        const response = await fetch(apiUrl);
+
         if (!response.ok) {
           console.error(
             "Response Error:",
@@ -42,8 +45,9 @@ const Film = () => {
           console.error("Error Response:", errorText);
           throw new Error("Network response was not ok");
         }
+
         const data = await response.json();
-        dispatch(setMovies(data));
+        dispatch(setMovies(data.results)); // Assuming data.results is the array of movies
       } catch (error) {
         console.error("Error fetching data:", error);
       }
@@ -87,7 +91,7 @@ const Film = () => {
               <div className="carousel-inner">
                 <div className="carousel-item active">
                   <div className="trend_2i row">
-                    {(movies || []).length > 0 ? (
+                    {movies ? (
                       <Slider {...settings}>
                         {movies.map((movie) => (
                           // Render each movie from the API
@@ -133,7 +137,7 @@ const Film = () => {
                         ))}
                       </Slider>
                     ) : (
-                      // Render movie data once it's available
+                      // Render loading message when movies are still being fetched
                       <div>Loading...</div>
                     )}
                   </div>

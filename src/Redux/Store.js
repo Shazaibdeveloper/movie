@@ -8,7 +8,7 @@ const Store = configureStore({
   reducer: {
     movies: moviesReducer,
     tv: tvReducer,
-    filter: FilterReducer,
+    movies: FilterReducer,
   },
 });
 
