@@ -33,10 +33,17 @@ const Film = () => {
           API_URLS[filter] + "?api_key=0a4ea0f6b58dd38f569836183f3dbf13"
         );
         if (!response.ok) {
+          console.error(
+            "Response Error:",
+            response.status,
+            response.statusText
+          );
+          const errorText = await response.text();
+          console.error("Error Response:", errorText);
           throw new Error("Network response was not ok");
         }
         const data = await response.json();
-        dispatch(setMovies(data.results));
+        dispatch(setMovies(data));
       } catch (error) {
         console.error("Error fetching data:", error);
       }
@@ -80,13 +87,9 @@ const Film = () => {
               <div className="carousel-inner">
                 <div className="carousel-item active">
                   <div className="trend_2i row">
-                    {movies.results === null ? (
-                      // Render a loading message or spinner while data is being fetched
-                      <div>Loading...</div>
-                    ) : (
-                      // Render movie data once it's available
+                    {(movies || []).length > 0 ? (
                       <Slider {...settings}>
-                        {movies.results.map((movie) => (
+                        {movies.map((movie) => (
                           // Render each movie from the API
                           <div
                             className="col-md-12 col-6 px-3 my-4"
@@ -129,6 +132,9 @@ const Film = () => {
                           </div>
                         ))}
                       </Slider>
+                    ) : (
+                      // Render movie data once it's available
+                      <div>Loading...</div>
                     )}
                   </div>
                 </div>
