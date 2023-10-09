@@ -92,19 +92,21 @@ const Stream = () => {
                                   </div>
                                 </div>
                                 <div class="trend_2im2 clearfix  position-absolute w-100 bottom-0">
-                                  <h5 className="title">
-                                    <a class="col_red" href="#">
-                                      {movie.title}
-                                    </a>
-                                  </h5>
-                                  <span class="col_red">
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                  </span>
-                                  <p class="mb-0">{movie.popularity} Views</p>
+                                  <div class="wrapper">
+                                    <h5 className="title">
+                                      <a class="col_red" href="#">
+                                        {movie.title}
+                                      </a>
+                                    </h5>
+                                    <span class="col_red">
+                                      <i class="fa fa-star"></i>
+                                      <i class="fa fa-star"></i>
+                                      <i class="fa fa-star"></i>
+                                      <i class="fa fa-star"></i>
+                                      <i class="fa fa-star"></i>
+                                    </span>
+                                    <p class="mb-0">{movie.popularity} Views</p>
+                                  </div>
                                 </div>
                               </div>
                             </div>

@@ -54,3 +54,8 @@ code {
 .red{
   background: #DE1002;
 }
+
+.wrapper {
+  position: absolute;
+  bottom: 25px;
+}
