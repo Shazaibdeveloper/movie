@@ -3,15 +3,13 @@ import Slider from "react-slick";
 import LatestFilters from "./LatestFilters";
 import { useDispatch, useSelector } from "react-redux";
 import { selectFilter, selectMovies, setMovies } from "../Redux/FilterSlice";
+const api_key = process.env.REACT_APP_API_KEY;
 
 const API_URLS = {
-  movies:
-    "https://api.themoviedb.org/3/trending/movie/day?api_key=0a4ea0f6b58dd38f569836183f3dbf13",
-  all: "https://api.themoviedb.org/3/trending/all/day?api_key=0a4ea0f6b58dd38f569836183f3dbf13",
-  now_playing:
-    "https://api.themoviedb.org/3/movie/now_playing?api_key=0a4ea0f6b58dd38f569836183f3dbf13",
-  top_rated:
-    "https://api.themoviedb.org/3/movie/top_rated?api_key=0a4ea0f6b58dd38f569836183f3dbf13",
+  movies: `https://api.themoviedb.org/3/trending/movie/day?api_key=${api_key}`,
+  all: `https://api.themoviedb.org/3/trending/all/day?api_key=${api_key}`,
+  now_playing: `https://api.themoviedb.org/3/movie/now_playing?api_key=${api_key}`,
+  top_rated: `https://api.themoviedb.org/3/movie/top_rated?api_key=${api_key}`,
 };
 
 const Film = () => {
