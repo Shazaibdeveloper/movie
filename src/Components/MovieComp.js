@@ -8,9 +8,19 @@ const MovieComp = () => {
   const movies = useSelector((state) => state.movies.movies);
   const currentPage = useSelector((state) => state.movies.currentPage);
   const totalPages = useSelector((state) => state.movies.totalPages);
+  const [selectedProduct, setSelectedProduct] = useState(null);
 
+  const handleProductClick = (movie) => {
+    setSelectedProduct(movie);
+  };
   useEffect(() => {
-    dispatch(fetchMovies(currentPage));
+    dispatch(fetchMovies(currentPage))
+      .then((response) => {
+        console.log("API Response:", response);
+      })
+      .catch((error) => {
+        console.error("API Error:", error);
+      });
   }, [dispatch, currentPage]);
   return (
     <>
@@ -48,24 +58,24 @@ const MovieComp = () => {
                   <div className="trend_2i row">
                     {movies ? (
                       // Render the component when moviesData is not null
+
                       <div className="trend_2i row">
                         {movies.map((movie) => (
                           <div
                             className="col-md-3 col-6 px-3 my-4"
                             key={movie.id}
                             id={movie.id}
+                            onClick={() => handleProductClick(movie)}
                           >
                             <div className="trend_2im clearfix position-relative">
                               <div className="trend_2im1 clearfix">
                                 <div className="grid">
                                   <figure className="effect-jazz mb-0">
-                                    <a href="#">
-                                      <img
-                                        src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}
-                                        className="w-100"
-                                        alt={movie.title}
-                                      />
-                                    </a>
+                                    <img
+                                      src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}
+                                      className="w-100"
+                                      alt={movie.title}
+                                    />
                                   </figure>
                                 </div>
                               </div>
