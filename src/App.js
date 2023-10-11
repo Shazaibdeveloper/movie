@@ -6,7 +6,7 @@ import Movies from "./Pages/Movies";
 import Tvseries from "./Pages/Tvseries";
 import { Provider } from "react-redux";
 import store from "./Redux/Store";
-import Details from "./Components/Details";
+import Detail from "./Pages/Detail";
 
 function App() {
   return (
@@ -18,7 +18,7 @@ function App() {
             <Route index element={<Home />} />
             <Route path="/movies" element={<Movies />} />
             <Route path="/tvseries" element={<Tvseries />} />
-            <Route path="/movies/:id" element={<Details />} />
+            <Route path="/movies/:id" element={<Detail />} />
             <Route path="*" element={<Error />} />
           </Routes>
         </Provider>

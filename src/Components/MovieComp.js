@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import MoviePagi from "./MoviePagi";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchMovies } from "../Redux/moviesSlice";
+import { Link } from "react-router-dom";
 
 const MovieComp = () => {
   const dispatch = useDispatch();
@@ -12,6 +13,7 @@ const MovieComp = () => {
 
   const handleProductClick = (movie) => {
     setSelectedProduct(movie);
+    console.log("clicked");
   };
   useEffect(() => {
     dispatch(fetchMovies(currentPage))
@@ -67,37 +69,40 @@ const MovieComp = () => {
                             id={movie.id}
                             onClick={() => handleProductClick(movie)}
                           >
-                            <div className="trend_2im clearfix position-relative">
-                              <div className="trend_2im1 clearfix">
-                                <div className="grid">
-                                  <figure className="effect-jazz mb-0">
-                                    <img
-                                      src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}
-                                      className="w-100"
-                                      alt={movie.title}
-                                    />
-                                  </figure>
+                            {" "}
+                            <Link to={`/movies/${movie.id}`}>
+                              <div className="trend_2im clearfix position-relative">
+                                <div className="trend_2im1 clearfix">
+                                  <div className="grid">
+                                    <figure className="effect-jazz mb-0">
+                                      <img
+                                        src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}
+                                        className="w-100"
+                                        alt={movie.title}
+                                      />
+                                    </figure>
+                                  </div>
                                 </div>
                               </div>
-                            </div>
-                            <div className="trend_2ilast bg_grey p-3 clearfix">
-                              <h5 className="title">
-                                <a className="col_red " href="#">
-                                  {movie.title}
-                                </a>
-                              </h5>
-                              <p className="mb-2 dotted-para">
-                                {movie.overview}
-                              </p>
-                              <span className="col_red">
-                                <i className="fa fa-star"></i>
-                                <i className="fa fa-star"></i>
-                                <i className="fa fa-star"></i>
-                                <i className="fa fa-star"></i>
-                                <i className="fa fa-star"></i>
-                              </span>
-                              <p className="mb-0">{movie.popularity} Views</p>
-                            </div>
+                              <div className="trend_2ilast bg_grey p-3 clearfix">
+                                <h5 className="title">
+                                  <a className="col_red " href="#">
+                                    {movie.title}
+                                  </a>
+                                </h5>
+                                <p className="mb-2 dotted-para">
+                                  {movie.overview}
+                                </p>
+                                <span className="col_red">
+                                  <i className="fa fa-star"></i>
+                                  <i className="fa fa-star"></i>
+                                  <i className="fa fa-star"></i>
+                                  <i className="fa fa-star"></i>
+                                  <i className="fa fa-star"></i>
+                                </span>
+                                <p className="mb-0">{movie.popularity} Views</p>
+                              </div>{" "}
+                            </Link>
                           </div>
                         ))}
                       </div>
