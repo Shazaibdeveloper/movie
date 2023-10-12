@@ -6,23 +6,11 @@ import { Link } from "react-router-dom";
 
 const MovieComp = () => {
   const dispatch = useDispatch();
-  const movies = useSelector((state) => state.movies.movies);
-  const currentPage = useSelector((state) => state.movies.currentPage);
-  const totalPages = useSelector((state) => state.movies.totalPages);
-  const [selectedProduct, setSelectedProduct] = useState(null);
+  const movies = useSelector((state) => state.movie.movies);
+  const currentPage = useSelector((state) => state.movie.currentPage);
 
-  const handleProductClick = (movie) => {
-    setSelectedProduct(movie);
-    console.log("clicked");
-  };
   useEffect(() => {
-    dispatch(fetchMovies(currentPage))
-      .then((response) => {
-        console.log("API Response:", response);
-      })
-      .catch((error) => {
-        console.error("API Error:", error);
-      });
+    dispatch(fetchMovies(currentPage));
   }, [dispatch, currentPage]);
   return (
     <>
@@ -67,7 +55,6 @@ const MovieComp = () => {
                             className="col-md-3 col-6 px-3 my-4"
                             key={movie.id}
                             id={movie.id}
-                            onClick={() => handleProductClick(movie)}
                           >
                             {" "}
                             <Link to={`/movies/${movie.id}`}>

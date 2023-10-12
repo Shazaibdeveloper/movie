@@ -4,8 +4,8 @@ import { fetchMovies } from "../Redux/moviesSlice";
 
 const MoviePagi = () => {
   const dispatch = useDispatch();
-  const currentPage = useSelector((state) => state.movies.currentPage);
-  const totalPages = useSelector((state) => state.movies.totalPages);
+  const currentPage = useSelector((state) => state.movie.currentPage);
+  const totalPages = useSelector((state) => state.movie.totalPages);
 
   const [visiblePages, setVisiblePages] = useState([1]); // Initial visible page
 

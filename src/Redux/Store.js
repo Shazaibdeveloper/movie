@@ -7,7 +7,7 @@ import DetailReducer from "./DetailSlice";
 
 const Store = configureStore({
   reducer: {
-    movies: moviesReducer,
+    movie: moviesReducer,
     tv: tvReducer,
     movies: FilterReducer,
     detail: DetailReducer,
