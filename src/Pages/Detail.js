@@ -5,6 +5,7 @@ import Navbar from "../Components/Navbar";
 import Footer from "../Components/Footer";
 import img from "../Images/pic1.jpg";
 import Modal from "react-modal";
+import { AiOutlinePlayCircle } from "react-icons/ai";
 
 Modal.setAppElement("#root"); // Set the root element for React Modal
 
@@ -63,8 +64,8 @@ const Detail = () => {
   return (
     <>
       <Navbar />
-      <section className="container detail-section">
-        <div className="detail-main-div">
+      <section className="container detail-section my-4 ">
+        <div className="detail-main-div p-5">
           <div className="row">
             <div className="col-4">
               <div className="detail-img-div">
@@ -74,16 +75,13 @@ const Detail = () => {
                   alt={movie.title}
                 />
               </div>
-              <div className="detail-btn-prime-logo">
-                <img src={img} /> <a href="#">Now Streaming Watch Now </a>
-              </div>
             </div>
             <div className="col-8">
               <div className="title">
-                <h1>{movie.title}</h1>
+                <h2>{movie.title}</h2>
               </div>
 
-              <div className="release-year-genre d-flex">
+              <div className="release-year-genre d-flex pb-2">
                 <p className="r-border">R</p>
                 <p> {movie.release_date}</p>
                 <p>
@@ -101,7 +99,7 @@ const Detail = () => {
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  Watch Trailer
+                  <AiOutlinePlayCircle /> Watch Trailer
                 </a>
               </div>
               <div className="modal">
@@ -125,6 +123,14 @@ const Detail = () => {
                     ></iframe>
                   </div>
                 </Modal>
+              </div>
+              <div className="tagline-div">
+                {" "}
+                <p>{movie.tagline}</p>
+              </div>
+              <div className="overview-div">
+                <h4>Overview</h4>
+                <p>{movie.overview}</p>
               </div>
             </div>
           </div>

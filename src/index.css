@@ -63,8 +63,7 @@ code {
  .detail-section{
   width: 100%;
   height: 60%; 
-  background-color: #555;
- }
+  }
 
 .detail-section p{
   margin: 0 5px;
@@ -107,14 +106,28 @@ height: 100% !important;
 }
 
 
+.trailer svg {
+  font-size: 40px;
+}
+
+.detail-img-div img {
+  border-radius: 20px;
+}
 
 
+.detail-main-div h2,.detail-main-div h4 ,.detail-main-div p{
+  margin: 10px 5px;
+}
 
+.release-year-genre p {
+  font-size: 13px;
+}
 
-
-
-
-
+.tagline-div p {
+  font-family: monospace;
+  font-size: 14px;
+  color: #ffffffa8;
+}
 
 
 
