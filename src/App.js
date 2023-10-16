@@ -18,7 +18,9 @@ function App() {
             <Route index element={<Home />} />
             <Route path="/movies" element={<Movies />} />
             <Route path="/tvseries" element={<Tvseries />} />
-            <Route path="/movies/:id" element={<Detail />} />
+            <Route path="/movies/:id" element={<Detail type="movie" />} />
+            <Route path="/tvseries/:id" element={<Detail type="tv" />} />{" "}
+            {/* Add route for TV series */}
             <Route path="*" element={<Error />} />
           </Routes>
         </Provider>

@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import TvPagi from "./TvPagi";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchtv } from "../Redux/tvSlice";
+import { Link } from "react-router-dom";
 
 const Tv = () => {
   const dispatch = useDispatch();
@@ -55,39 +56,41 @@ const Tv = () => {
                             key={movie.id}
                             id={movie.id}
                           >
-                            <div className="trend_2im clearfix position-relative">
-                              <div className="trend_2im1 clearfix">
-                                <div className="grid">
-                                  <figure className="effect-jazz mb-0">
-                                    <a href="#">
-                                      <img
-                                        src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}
-                                        className="w-100"
-                                        alt={movie.title}
-                                      />
-                                    </a>
-                                  </figure>
+                            <Link to={`/tvseries/${movie.id}`}>
+                              <div className="trend_2im clearfix position-relative">
+                                <div className="trend_2im1 clearfix">
+                                  <div className="grid">
+                                    <figure className="effect-jazz mb-0">
+                                      <a href="#">
+                                        <img
+                                          src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}
+                                          className="w-100"
+                                          alt={movie.title}
+                                        />
+                                      </a>
+                                    </figure>
+                                  </div>
                                 </div>
                               </div>
-                            </div>
-                            <div className="trend_2ilast bg_grey p-3 clearfix">
-                              <h5 className="title">
-                                <a className="col_red " href="#">
-                                  {movie.title}
-                                </a>
-                              </h5>
-                              <p className="mb-2 dotted-para">
-                                {movie.overview}
-                              </p>
-                              <span className="col_red">
-                                <i className="fa fa-star"></i>
-                                <i className="fa fa-star"></i>
-                                <i className="fa fa-star"></i>
-                                <i className="fa fa-star"></i>
-                                <i className="fa fa-star"></i>
-                              </span>
-                              <p className="mb-0">{movie.popularity} Views</p>
-                            </div>
+                              <div className="trend_2ilast bg_grey p-3 clearfix">
+                                <h5 className="title">
+                                  <a className="col_red " href="#">
+                                    {movie.title}
+                                  </a>
+                                </h5>
+                                <p className="mb-2 dotted-para">
+                                  {movie.overview}
+                                </p>
+                                <span className="col_red">
+                                  <i className="fa fa-star"></i>
+                                  <i className="fa fa-star"></i>
+                                  <i className="fa fa-star"></i>
+                                  <i className="fa fa-star"></i>
+                                  <i className="fa fa-star"></i>
+                                </span>
+                                <p className="mb-0">{movie.popularity} Views</p>
+                              </div>
+                            </Link>
                           </div>
                         ))}
                       </div>

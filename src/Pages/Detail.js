@@ -9,20 +9,21 @@ import { AiOutlinePlayCircle } from "react-icons/ai";
 
 Modal.setAppElement("#root"); // Set the root element for React Modal
 
-const Detail = () => {
+const Detail = ({ type }) => {
   const { id } = useParams();
-  const [movie, setMovie] = useState(null);
+  const [data, setData] = useState(null); // Rename movie state to data
   const [trailer, setTrailer] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   useEffect(() => {
     const api_key = process.env.REACT_APP_API_KEY;
+    const apiUrl = type === "movie" ? "movie" : "tv"; // Determine the API endpoint based on type
 
     // Fetch movie details
     axios
-      .get(`https://api.themoviedb.org/3/movie/${id}?api_key=${api_key}`)
+      .get(`https://api.themoviedb.org/3/${apiUrl}/${id}?api_key=${api_key}`)
       .then((response) => {
-        setMovie(response.data);
+        setData(response.data);
 
         // Fetch movie trailer
         axios
@@ -57,38 +58,54 @@ const Detail = () => {
     setIsModalOpen(false);
   };
 
-  if (!movie) {
+  if (!data) {
     return <div>Loading...</div>;
   }
+  const {
+    name,
+    title,
+    poster_path,
+    release_date,
+    genres,
+    runtime,
+    tagline,
+    overview,
+  } = data;
 
   return (
     <>
       <Navbar />
-      <section className="container detail-section my-4 ">
+      <section className="container detail-section my-4">
+        {/* Render the details using the destructured variables */}
         <div className="detail-main-div p-5">
           <div className="row">
             <div className="col-4">
               <div className="detail-img-div">
                 <img
-                  src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}
+                  src={`https://image.tmdb.org/t/p/w500/${poster_path}`}
                   className="w-100"
-                  alt={movie.title}
+                  alt={name || title}
                 />
               </div>
             </div>
             <div className="col-8">
               <div className="title">
-                <h2>{movie.title}</h2>
+                <h2>{name || title}</h2>
               </div>
 
-              <div className="release-year-genre d-flex pb-2">
-                <p className="r-border">R</p>
-                <p> {movie.release_date}</p>
-                <p>
-                  {movie.genres[0].name}, {movie.genres[1].name}
-                </p>
-                <p>{movie.runtime} mints</p>
-              </div>
+              {/* Add conditional checks for other properties */}
+              {release_date && (
+                <div className="release-year-genre d-flex pb-2">
+                  <p className="r-border">R</p>
+                  <p>{release_date}</p>
+                  {genres && (
+                    <p>
+                      {genres[0]?.name}, {genres[1]?.name}
+                    </p>
+                  )}
+                  <p>{runtime} minutes</p>
+                </div>
+              )}
               <div className="trailer">
                 <a
                   href={trailer}
@@ -126,11 +143,11 @@ const Detail = () => {
               </div>
               <div className="tagline-div">
                 {" "}
-                <p>{movie.tagline}</p>
+                <p>{tagline}</p>
               </div>
               <div className="overview-div">
                 <h4>Overview</h4>
-                <p>{movie.overview}</p>
+                <p>{overview}</p>
               </div>
             </div>
           </div>
