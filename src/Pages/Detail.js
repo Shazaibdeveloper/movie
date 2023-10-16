@@ -3,7 +3,6 @@ import { useParams } from "react-router-dom";
 import axios from "axios";
 import Navbar from "../Components/Navbar";
 import Footer from "../Components/Footer";
-import img from "../Images/pic1.jpg";
 import Modal from "react-modal";
 import { AiOutlinePlayCircle } from "react-icons/ai";
 
@@ -11,7 +10,7 @@ Modal.setAppElement("#root"); // Set the root element for React Modal
 
 const Detail = ({ type }) => {
   const { id } = useParams();
-  const [data, setData] = useState(null); // Rename movie state to data
+  const [data, setData] = useState(null);
   const [trailer, setTrailer] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
@@ -19,16 +18,15 @@ const Detail = ({ type }) => {
     const api_key = process.env.REACT_APP_API_KEY;
     const apiUrl = type === "movie" ? "movie" : "tv"; // Determine the API endpoint based on type
 
-    // Fetch movie details
+    // Fetch movie or TV series details
     axios
       .get(`https://api.themoviedb.org/3/${apiUrl}/${id}?api_key=${api_key}`)
       .then((response) => {
         setData(response.data);
-
-        // Fetch movie trailer
+        // Fetch movie or TV series trailer
         axios
           .get(
-            `https://api.themoviedb.org/3/movie/${id}/videos?api_key=${api_key}`
+            `https://api.themoviedb.org/3/${apiUrl}/${id}/videos?api_key=${api_key}`
           )
           .then((trailerResponse) => {
             // Check if there is a trailer available
@@ -45,10 +43,10 @@ const Detail = ({ type }) => {
           });
       })
       .catch((error) => {
-        console.error("Error fetching movie details:", error);
+        console.error("Error fetching details:", error);
         // Handle the error, e.g., display an error message to the user
       });
-  }, [id]);
+  }, [id, type]);
 
   const openModal = () => {
     setIsModalOpen(true);
@@ -61,6 +59,7 @@ const Detail = ({ type }) => {
   if (!data) {
     return <div>Loading...</div>;
   }
+
   const {
     name,
     title,
@@ -76,7 +75,6 @@ const Detail = ({ type }) => {
     <>
       <Navbar />
       <section className="container detail-section my-4">
-        {/* Render the details using the destructured variables */}
         <div className="detail-main-div p-5">
           <div className="row">
             <div className="col-4">
@@ -92,8 +90,6 @@ const Detail = ({ type }) => {
               <div className="title">
                 <h2>{name || title}</h2>
               </div>
-
-              {/* Add conditional checks for other properties */}
               {release_date && (
                 <div className="release-year-genre d-flex pb-2">
                   <p className="r-border">R</p>
@@ -110,7 +106,7 @@ const Detail = ({ type }) => {
                 <a
                   href={trailer}
                   onClick={(e) => {
-                    e.preventDefault(); // Prevent the default behavior of the button (opening a new tab)
+                    e.preventDefault();
                     openModal();
                   }}
                   target="_blank"
@@ -120,7 +116,6 @@ const Detail = ({ type }) => {
                 </a>
               </div>
               <div className="modal">
-                {" "}
                 <Modal
                   isOpen={isModalOpen}
                   onRequestClose={closeModal}
@@ -133,7 +128,7 @@ const Detail = ({ type }) => {
                     <iframe
                       title="Trailer"
                       width="100%"
-                      height="100% "
+                      height="100%"
                       src={trailer}
                       frameBorder="0"
                       allowFullScreen
@@ -142,7 +137,6 @@ const Detail = ({ type }) => {
                 </Modal>
               </div>
               <div className="tagline-div">
-                {" "}
                 <p>{tagline}</p>
               </div>
               <div className="overview-div">
