@@ -7,6 +7,7 @@ import img3 from "../Images/img3.jpg";
 import Film from "../Components/Film";
 import Upcomming from "../Components/Upcomming";
 import Stream from "../Components/Stream";
+import TvFilterComp from "../Components/TvFilterComp";
 
 const Home = () => {
   return (
@@ -203,6 +204,7 @@ const Home = () => {
       <Film />
       <Upcomming />
       <Stream />
+      <TvFilterComp />
       <Footer />
     </>
   );
