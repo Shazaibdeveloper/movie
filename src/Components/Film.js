@@ -3,6 +3,7 @@ import Slider from "react-slick";
 import LatestFilters from "./LatestFilters";
 import { useDispatch, useSelector } from "react-redux";
 import { selectFilter, selectMovies, setMovies } from "../Redux/FilterSlice";
+import Skeleton from "react-loading-skeleton";
 const api_key = process.env.REACT_APP_API_KEY;
 
 const API_URLS = {
@@ -95,8 +96,8 @@ const Film = () => {
                           // Render each movie from the API
                           <div
                             className="col-md-12 col-6 px-3 my-4"
-                            key={movie.id}
-                            id={movie.id}
+                            key={movie.id || <Skeleton />}
+                            id={movie.id || <Skeleton />}
                           >
                             <div className="trend_2im clearfix position-relative">
                               <div className="trend_2im1 clearfix">
@@ -104,7 +105,9 @@ const Film = () => {
                                   <figure className="effect-jazz mb-0">
                                     <a href="#">
                                       <img
-                                        src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}
+                                        src={`https://image.tmdb.org/t/p/w500/${
+                                          movie.poster_path || <Skeleton />
+                                        }`}
                                         className="w-100"
                                         alt={movie.title}
                                       />
@@ -116,11 +119,11 @@ const Film = () => {
                             <div className="trend_2ilast bg_grey p-3 clearfix">
                               <h5 className="title">
                                 <a className="col_red " href="#">
-                                  {movie.title}
+                                  {movie.title || <Skeleton />}
                                 </a>
                               </h5>
                               <p className="mb-2 dotted-para">
-                                {movie.overview}
+                                {movie.overview || <Skeleton />}
                               </p>
                               <span className="col_red">
                                 <i className="fa fa-star"></i>
@@ -129,14 +132,16 @@ const Film = () => {
                                 <i className="fa fa-star"></i>
                                 <i className="fa fa-star"></i>
                               </span>
-                              <p className="mb-0">{movie.popularity} Views</p>
+                              <p className="mb-0">
+                                {movie.popularity || <Skeleton />} Views
+                              </p>
                             </div>
                           </div>
                         ))}
                       </Slider>
                     ) : (
                       // Render loading message when movies are still being fetched
-                      <div>Loading...</div>
+                      <Skeleton />
                     )}
                   </div>
                 </div>

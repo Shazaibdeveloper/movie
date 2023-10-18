@@ -3,6 +3,7 @@ import MoviePagi from "./MoviePagi";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchMovies } from "../Redux/moviesSlice";
 import { Link } from "react-router-dom";
+import Skeleton from "react-loading-skeleton";
 
 const MovieComp = () => {
   const dispatch = useDispatch();
@@ -57,13 +58,15 @@ const MovieComp = () => {
                             id={movie.id}
                           >
                             {" "}
-                            <Link to={`/movies/${movie.id}`}>
+                            <Link to={`/movies/${movie.id || <Skeleton />}`}>
                               <div className="trend_2im clearfix position-relative">
                                 <div className="trend_2im1 clearfix">
                                   <div className="grid">
                                     <figure className="effect-jazz mb-0">
                                       <img
-                                        src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}
+                                        src={`https://image.tmdb.org/t/p/w500/${
+                                          movie.poster_path || <Skeleton />
+                                        }`}
                                         className="w-100"
                                         alt={movie.title}
                                       />
@@ -74,11 +77,11 @@ const MovieComp = () => {
                               <div className="trend_2ilast bg_grey p-3 clearfix">
                                 <h5 className="title">
                                   <a className="col_red " href="#">
-                                    {movie.title}
+                                    {movie.title || <Skeleton />}
                                   </a>
                                 </h5>
                                 <p className="mb-2 dotted-para">
-                                  {movie.overview}
+                                  {movie.overview || <Skeleton />}
                                 </p>
                                 <span className="col_red">
                                   <i className="fa fa-star"></i>
@@ -87,7 +90,9 @@ const MovieComp = () => {
                                   <i className="fa fa-star"></i>
                                   <i className="fa fa-star"></i>
                                 </span>
-                                <p className="mb-0">{movie.popularity} Views</p>
+                                <p className="mb-0">
+                                  {movie.popularity || <Skeleton />} Views
+                                </p>
                               </div>{" "}
                             </Link>
                           </div>
@@ -95,7 +100,7 @@ const MovieComp = () => {
                       </div>
                     ) : (
                       // Render a loading indicator or message when moviesData is null
-                      <p>Loading...</p>
+                      <Skeleton />
                     )}
                   </div>
                 </div>

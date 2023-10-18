@@ -7,24 +7,28 @@ import Tvseries from "./Pages/Tvseries";
 import { Provider } from "react-redux";
 import store from "./Redux/Store";
 import Detail from "./Pages/Detail";
+import { SkeletonTheme } from "react-loading-skeleton";
+import "react-loading-skeleton/dist/skeleton.css";
 
 function App() {
   return (
     <>
-      <BrowserRouter>
-        <Provider store={store}>
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route index element={<Home />} />
-            <Route path="/movies" element={<Movies />} />
-            <Route path="/tvseries" element={<Tvseries />} />
-            <Route path="/movies/:id" element={<Detail type="movie" />} />
-            <Route path="/tvseries/:id" element={<Detail type="tv" />} />{" "}
-            {/* Add route for TV series */}
-            <Route path="*" element={<Error />} />
-          </Routes>
-        </Provider>
-      </BrowserRouter>
+      <SkeletonTheme>
+        <BrowserRouter>
+          <Provider store={store}>
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route index element={<Home />} />
+              <Route path="/movies" element={<Movies />} />
+              <Route path="/tvseries" element={<Tvseries />} />
+              <Route path="/movies/:id" element={<Detail type="movie" />} />
+              <Route path="/tvseries/:id" element={<Detail type="tv" />} />{" "}
+              {/* Add route for TV series */}
+              <Route path="*" element={<Error />} />
+            </Routes>
+          </Provider>
+        </BrowserRouter>
+      </SkeletonTheme>
     </>
   );
 }

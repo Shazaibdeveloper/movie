@@ -3,6 +3,8 @@ import TvFilterbtn from "./TvFilterbtn";
 import Slider from "react-slick";
 import { selectFilter, selectMovies, setMovies } from "../Redux/TvFilter";
 import { useDispatch, useSelector } from "react-redux";
+import Skeleton from "react-loading-skeleton";
+
 const api_key = process.env.REACT_APP_API_KEY;
 
 const API_URLS = {
@@ -79,71 +81,54 @@ const TvFilterComp = () => {
                         {movies.map((movie) => (
                           // Render each movie from the API
 
-                          <div class="popular_2i1 row">
-                            <div class="col-md-4 col-4">
-                              <div class="popular_2i1lm position-relative clearfix">
-                                <div class="popular_2i1lm1 clearfix">
-                                  <div class="grid">
-                                    <figure class="effect-jazz mb-0">
-                                      <a href="#">
-                                        <img
-                                          class="w-100"
-                                          src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}
-                                          className="w-100"
-                                          alt={movie.title}
-                                        />
-                                      </a>
-                                    </figure>
-                                  </div>
-                                </div>
-                                <div class="popular_2i1lm2 position-absolute top-0 w-100 text-center clearfix">
-                                  <ul>
-                                    <li class="d-inline-block">
-                                      <a href="#">
-                                        <i class="fa fa-link col_red"></i>
-                                      </a>
-                                    </li>
-                                    <li class="d-inline-block">
-                                      <a href="#">
-                                        <i class="fa fa-search col_red"></i>
-                                      </a>
-                                    </li>
-                                  </ul>
+                          <div
+                            className="col-md-12 col-6 px-3 my-4"
+                            key={movie.id || <Skeleton />}
+                            id={movie.id || <Skeleton />}
+                          >
+                            <div className="trend_2im clearfix position-relative">
+                              <div className="trend_2im1 clearfix">
+                                <div className="grid">
+                                  <figure className="effect-jazz mb-0">
+                                    <a href="#">
+                                      <img
+                                        src={`https://image.tmdb.org/t/p/w500/${
+                                          movie.poster_path || <Skeleton />
+                                        }`}
+                                        className="w-100"
+                                        alt={movie.title}
+                                      />
+                                    </a>
+                                  </figure>
                                 </div>
                               </div>
                             </div>
-                            <div class="col-md-8 col-8">
-                              <div class="popular_2i1r">
-                                <h5>
-                                  <a class="col_red" href="#">
-                                    {movie.title}
-                                  </a>
-                                </h5>
-                                <h6>Action, Thriller</h6>
-                                <h6>
-                                  {" "}
-                                  Imdb {movie.popularity}
-                                  <span class="ms-2">
-                                    <i class="fa fa-star col_red me-1"></i>
-                                  </span>{" "}
-                                  Year : 2022{" "}
-                                  <span class="ms-2">Runtime: 1h 49m</span>
-                                </h6>
-                                <p>{movie.overview}</p>
-                                <h6 class="mb-0">
-                                  <a class="button" href="#">
-                                    {" "}
-                                    More Info - Trailer
-                                  </a>
-                                </h6>
-                              </div>
+                            <div className="trend_2ilast bg_grey p-3 clearfix">
+                              <h5 className="title">
+                                <a className="col_red " href="#">
+                                  {movie.title}
+                                </a>
+                              </h5>
+                              <p className="mb-2 dotted-para">
+                                {movie.overview}
+                              </p>
+                              <span className="col_red">
+                                <i className="fa fa-star"></i>
+                                <i className="fa fa-star"></i>
+                                <i className="fa fa-star"></i>
+                                <i className="fa fa-star"></i>
+                                <i className="fa fa-star"></i>
+                              </span>
+                              <p className="mb-0">
+                                {movie.popularity || <Skeleton />} Views
+                              </p>
                             </div>
                           </div>
                         ))}
                       </Slider>
                     ) : (
                       // Render loading message when movies are still being fetched
-                      <div>Loading...</div>
+                      <Skeleton />
                     )}
                   </div>
                 </div>
