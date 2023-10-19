@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import Slider from "react-slick";
 
 const Upcomming = () => {
@@ -75,44 +76,46 @@ const Upcomming = () => {
                     {moviesData.results.map((movie) => (
                       // Render each movie from the API
                       <div class="col-md-12 px-3" key={movie.id} id={movie.id}>
-                        <div class="trend_2im clearfix position-relative">
-                          <div class="trend_2im1 clearfix">
-                            <div class="grid">
-                              <figure class="effect-jazz mb-0">
-                                <a href="#">
-                                  <img
-                                    src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}
-                                    className="w-100"
-                                    alt={movie.title}
-                                  />
+                        <Link to={`/movies/${movie.id}`}>
+                          <div class="trend_2im clearfix position-relative">
+                            <div class="trend_2im1 clearfix">
+                              <div class="grid">
+                                <figure class="effect-jazz mb-0">
+                                  <a href="#">
+                                    <img
+                                      src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}
+                                      className="w-100"
+                                      alt={movie.title}
+                                    />
+                                  </a>
+                                </figure>
+                              </div>
+                            </div>
+                            <div class="trend_2im2 clearfix text-center position-absolute w-100 top-0">
+                              <span class="fs-1">
+                                <a class="col_red" href="#">
+                                  <i class="fa fa-youtube-play"></i>
                                 </a>
-                              </figure>
+                              </span>
                             </div>
                           </div>
-                          <div class="trend_2im2 clearfix text-center position-absolute w-100 top-0">
-                            <span class="fs-1">
+                          <div class="trend_2ilast bg_grey p-3 clearfix">
+                            <h5 className="title">
                               <a class="col_red" href="#">
-                                <i class="fa fa-youtube-play"></i>
+                                {movie.title}
                               </a>
+                            </h5>
+                            <p class="mb-2 dotted-para">{movie.overview}</p>
+                            <span class="col_red">
+                              <i class="fa fa-star"></i>
+                              <i class="fa fa-star"></i>
+                              <i class="fa fa-star"></i>
+                              <i class="fa fa-star"></i>
+                              <i class="fa fa-star"></i>
                             </span>
+                            <p class="mb-0">{movie.popularity} Views</p>
                           </div>
-                        </div>
-                        <div class="trend_2ilast bg_grey p-3 clearfix">
-                          <h5 className="title">
-                            <a class="col_red" href="#">
-                              {movie.title}
-                            </a>
-                          </h5>
-                          <p class="mb-2 dotted-para">{movie.overview}</p>
-                          <span class="col_red">
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                          </span>
-                          <p class="mb-0">{movie.popularity} Views</p>
-                        </div>
+                        </Link>
                       </div>
                     ))}
                   </Slider>

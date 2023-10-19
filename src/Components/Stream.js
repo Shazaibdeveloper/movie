@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import Slider from "react-slick";
 
 const Stream = () => {
@@ -78,6 +79,7 @@ const Stream = () => {
                           {moviesData.results.map((movie) => (
                             <div class="col px-3" key={movie.id} id={movie.id}>
                               <div class="trend_2im clearfix position-relative">
+                                <Link to={`/movies/${movie.id}`}></Link>
                                 <div class="trend_2im1 clearfix">
                                   <div class="grid">
                                     <figure class="effect-jazz mb-0">
