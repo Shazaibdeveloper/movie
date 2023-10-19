@@ -66,7 +66,7 @@ const TvFilterComp = () => {
               <div class="trend_1l">
                 <h4 class="mb-0">
                   <i class="fa fa-youtube-play align-middle col_red me-1"></i>{" "}
-                  Trending <span class="col_red">Events</span>
+                  Trending <span class="col_red">Series</span>
                 </h4>
               </div>
             </div>
