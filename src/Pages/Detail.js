@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import axios from "axios";
 import Navbar from "../Components/Navbar";
 import Footer from "../Components/Footer";
 import Modal from "react-modal";
 import { AiOutlinePlayCircle } from "react-icons/ai";
+import Slider from "react-slick";
 
 Modal.setAppElement("#root"); // Set the root element for React Modal
 
@@ -13,7 +14,16 @@ const Detail = ({ type }) => {
   const [data, setData] = useState(null);
   const [trailer, setTrailer] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
-
+  const [recommendations, setRecommendations] = useState([]);
+  var settings = {
+    dots: true,
+    pauseOnHover: true,
+    infinite: true,
+    speed: 3000,
+    autoplay: true,
+    slidesToShow: 4,
+    slidesToScroll: 4,
+  };
   useEffect(() => {
     const api_key = process.env.REACT_APP_API_KEY;
     const apiUrl = type === "movie" ? "movie" : "tv"; // Determine the API endpoint based on type
@@ -45,6 +55,17 @@ const Detail = ({ type }) => {
       .catch((error) => {
         console.error("Error fetching details:", error);
         // Handle the error, e.g., display an error message to the user
+      });
+
+    axios
+      .get(
+        `https://api.themoviedb.org/3/${apiUrl}/${id}/recommendations?api_key=${api_key}`
+      )
+      .then((recommendationsResponse) => {
+        setRecommendations(recommendationsResponse.data.results);
+      })
+      .catch((recommendationsError) => {
+        console.error("Error fetching recommendations:", recommendationsError);
       });
   }, [id, type]);
 
@@ -147,6 +168,125 @@ const Detail = ({ type }) => {
           </div>
         </div>
       </section>
+      <div className="container">
+        <div className="row trend_1">
+          <div className="col-md-6 col-6">
+            <div className="trend_1l d-flex">
+              <h4 className="mb-0">
+                <i className="fa fa-youtube-play align-middle col_red me-1"></i>{" "}
+                Recommended <span className="col_red"> Movies/Tvseries</span>
+              </h4>
+            </div>
+          </div>
+          <div className="col-md-6 col-6">
+            <div className="trend_1r text-end">
+              <h6 className="mb-0">
+                <a className="button" href="#">
+                  {" "}
+                  View All
+                </a>
+              </h6>
+            </div>
+          </div>
+        </div>
+        {recommendations ? (
+          <Slider {...settings}>
+            {recommendations.map((recommendation) => (
+              // Render each movie from the API
+              <div
+                className="col-md-12 col-6 px-3 my-4"
+                key={recommendation.id}
+                id={recommendation.id}
+              >
+                <Link
+                  to={`/${type === "movie" ? "movies" : "tv"}/${
+                    recommendation.id
+                  }`}
+                >
+                  <div className="trend_2im clearfix position-relative">
+                    <div className="trend_2im1 clearfix">
+                      <div className="grid">
+                        <figure className="effect-jazz mb-0">
+                          <a href="#">
+                            <img
+                              src={`https://image.tmdb.org/t/p/w500/${recommendation.poster_path}`}
+                              className="w-100"
+                              alt={recommendation.title}
+                            />
+                          </a>
+                        </figure>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="trend_2ilast bg_grey p-3 clearfix">
+                    <h5 className="title">
+                      <a className="col_red " href="#">
+                        {recommendation.title}
+                      </a>
+                    </h5>
+                    <p className="mb-2 dotted-para">
+                      {recommendation.overview}
+                    </p>
+                    <span className="col_red">
+                      <i className="fa fa-star"></i>
+                      <i className="fa fa-star"></i>
+                      <i className="fa fa-star"></i>
+                      <i className="fa fa-star"></i>
+                      <i className="fa fa-star"></i>
+                    </span>
+                    <p className="mb-0">{recommendation.popularity} Views</p>
+                  </div>
+                </Link>
+              </div>
+            ))}
+          </Slider>
+        ) : (
+          // Render loading message when movies are still being fetched
+          <div>loading</div>
+        )}
+      </div>
+      {/* {recommendation.map((recommendation) => (
+        <div
+          className="col-md-3 col-6 px-3 my-4"
+          key={recommendation.id}
+          id={recommendation.id}
+        >
+          {" "}
+          <Link
+            to={`/${type === "movie" ? "movies" : "tv"}/${recommendation.id}`}
+          >
+            <div className="trend_2im clearfix position-relative">
+              <div className="trend_2im1 clearfix">
+                <div className="grid">
+                  <figure className="effect-jazz mb-0">
+                    <img
+                      src={`https://image.tmdb.org/t/p/w500/${recommendation.poster_path}`}
+                      className="w-100"
+                      alt={recommendation.title}
+                    />
+                  </figure>
+                </div>
+              </div>
+            </div>
+            <div className="trend_2ilast bg_grey p-3 clearfix">
+              <h5 className="title">
+                <a className="col_red " href="#">
+                  {recommendation.title}
+                </a>
+              </h5>
+              <p className="mb-2 dotted-para">{recommendation.overview}</p>
+              <span className="col_red">
+                <i className="fa fa-star"></i>
+                <i className="fa fa-star"></i>
+                <i className="fa fa-star"></i>
+                <i className="fa fa-star"></i>
+                <i className="fa fa-star"></i>
+              </span>
+              <p className="mb-0">{recommendation.popularity} Views</p>
+            </div>{" "}
+          </Link>
+        </div>
+      ))} */}
       <Footer />
     </>
   );
