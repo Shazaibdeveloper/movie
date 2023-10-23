@@ -199,7 +199,7 @@ const Detail = ({ type }) => {
                 id={recommendation.id}
               >
                 <Link
-                  to={`/${type === "movie" ? "movies" : "tv"}/${
+                  to={`/${type === "movie" ? "movies" : "tvseries"}/${
                     recommendation.id
                   }`}
                 >
