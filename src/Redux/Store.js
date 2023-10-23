@@ -5,6 +5,7 @@ import tvReducer from "./tvSlice";
 import FilterReducer from "./FilterSlice";
 import tvSlice from "./TvFilter";
 import DetailReducer from "./DetailSlice";
+import searchReducer from "./searchSlice";
 
 const Store = configureStore({
   reducer: {
@@ -13,6 +14,7 @@ const Store = configureStore({
     movies: FilterReducer,
     detail: DetailReducer,
     tvSlice: tvSlice,
+    search: searchReducer,
   },
 });
 
