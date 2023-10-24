@@ -57,7 +57,7 @@ const Navbar = () => {
                   <input
                     type="text"
                     className="form-control bg-black"
-                    placeholder="Search Site..."
+                    placeholder="Search Movie/Tvseries..."
                     value={searchTerm}
                     onChange={(e) => setSearchTerm(e.target.value)}
                   />
