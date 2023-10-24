@@ -9,55 +9,55 @@ const TvFilterbtn = () => {
   const handleFilterChange = (newFilter) => {
     dispatch(setFilter(newFilter));
   };
+
   return (
     <>
-      <div class="row popular_1 mt-4">
-        <ul class="nav nav-tabs  border-0 mb-0">
-          <li class="nav-item">
+      <div className="row popular_1 mt-4">
+        <ul className="nav nav-tabs border-0 mb-0">
+          <li className="nav-item">
             <a
               href="#home"
               data-bs-toggle="tab"
               aria-expanded="false"
-              className={filter === "airing_today" ? "nav-link" : "  nav-link"}
+              className={`nav-link ${
+                filter === "airing_today" ? "active" : ""
+              }`}
               onClick={() => handleFilterChange("airing_today")}
             >
-              <span class="d-md-block">Airing Today</span>
+              <span className="d-md-block">Airing Today</span>
             </a>
           </li>
-          <li class="nav-item">
+          <li className="nav-item">
             <a
               href="#profile"
               data-bs-toggle="tab"
               aria-expanded="true"
-              className={
-                filter === "on_the_air" ? " nav-link active" : "nav-link"
-              }
+              className={`nav-link ${filter === "on_the_air" ? "active" : ""}`}
               onClick={() => handleFilterChange("on_the_air")}
             >
-              <span class="d-md-block">On The Air</span>
+              <span className="d-md-block">On The Air</span>
             </a>
           </li>
-          <li class="nav-item">
+          <li className="nav-item">
             <a
               href="#settings"
               data-bs-toggle="tab"
               aria-expanded="false"
-              className={filter === "popular" ? "nav-link" : "nav-link"}
+              className={`nav-link ${filter === "popular" ? "active" : ""}`}
               onClick={() => handleFilterChange("popular")}
             >
-              <span class="d-md-block">Popular</span>
+              <span className="d-md-block">Popular</span>
             </a>
           </li>
-
-          <li class="nav-item">
+          <li className="nav-item">
             <a
               href="#settings_o"
               data-bs-toggle="tab"
               aria-expanded="false"
-              className={filter === "top_rated" ? "nav-link" : "nav-link"}
+              className={`nav-link ${filter === "top_rated" ? "active" : ""}`}
               onClick={() => handleFilterChange("top_rated")}
             >
-              <span class="d-md-block">Top Rated</span>
+              <span className="d-md-block">Top Rated</span>
             </a>
           </li>
         </ul>

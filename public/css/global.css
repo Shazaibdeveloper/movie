@@ -243,6 +243,7 @@ padding: 0;
 }
 ul.social-network li {
 display: inline-block;
+margin: 0 5px;
 }
 
 /* footer social icons */

@@ -3,7 +3,6 @@ import Slider from "react-slick";
 import LatestFilters from "./LatestFilters";
 import { useDispatch, useSelector } from "react-redux";
 import { selectFilter, selectMovies, setMovies } from "../Redux/FilterSlice";
-import Skeleton from "react-loading-skeleton";
 import { Link } from "react-router-dom";
 const api_key = process.env.REACT_APP_API_KEY;
 
@@ -107,9 +106,7 @@ const Film = () => {
                                     <figure className="effect-jazz mb-0">
                                       <a href="#">
                                         <img
-                                          src={`https://image.tmdb.org/t/p/w500/${
-                                            movie.poster_path || <Skeleton />
-                                          }`}
+                                          src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}
                                           className="w-100"
                                           alt={movie.title}
                                         />
@@ -121,11 +118,11 @@ const Film = () => {
                               <div className="trend_2ilast bg_grey p-3 clearfix">
                                 <h5 className="title">
                                   <a className="col_red " href="#">
-                                    {movie.title || <Skeleton />}
+                                    {movie.title}
                                   </a>
                                 </h5>
                                 <p className="mb-2 dotted-para">
-                                  {movie.overview || <Skeleton />}
+                                  {movie.overview}
                                 </p>
                                 <span className="col_red">
                                   <i className="fa fa-star"></i>
@@ -134,9 +131,7 @@ const Film = () => {
                                   <i className="fa fa-star"></i>
                                   <i className="fa fa-star"></i>
                                 </span>
-                                <p className="mb-0">
-                                  {movie.popularity || <Skeleton />} Views
-                                </p>
+                                <p className="mb-0">{movie.popularity} Views</p>
                               </div>
                             </Link>
                           </div>
@@ -144,7 +139,7 @@ const Film = () => {
                       </Slider>
                     ) : (
                       // Render loading message when movies are still being fetched
-                      <Skeleton />
+                      <div>Loading....</div>
                     )}
                   </div>
                 </div>

@@ -8,7 +8,7 @@ const Navbar = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const searchResults = useSelector((state) => state.search);
   const api_key = process.env.REACT_APP_API_KEY;
-
+  const type = useSelector((state) => state.type);
   useEffect(() => {
     const search = async () => {
       try {
@@ -73,26 +73,32 @@ const Navbar = () => {
                 <div className="div-container">
                   {searchResults.map((result) => (
                     <div className="box2">
-                      <div className="cart-item" key={result.id}>
-                        <div className="cart-item-pic">
-                          {/* Display movie/tv series image */}
-                          <img
-                            src={`https://image.tmdb.org/t/p/w500/${result.poster_path} `}
-                          />
-                        </div>
-                        <div className="text-div">
-                          <h4>{result.title}</h4>
-                          <span className="cart-item-desc">
-                            <p>{result.overview}</p>
-                          </span>
-                        </div>
+                      <Link
+                        to={`/${type === "movie" ? "movies" : "tvseries"}/${
+                          result.id
+                        }`}
+                      >
+                        <div className="cart-item" key={result.id}>
+                          <div className="cart-item-pic">
+                            {/* Display movie/tv series image */}
+                            <img
+                              src={`https://image.tmdb.org/t/p/w500/${result.poster_path} `}
+                            />
+                          </div>
+                          <div className="text-div">
+                            <h4>{result.title}</h4>
+                            <span className="cart-item-desc">
+                              <p>{result.overview}</p>
+                            </span>
+                          </div>
 
-                        <div className="price-div">
-                          <span className="cart-item-price">
-                            <p>View</p>
-                          </span>
+                          <div className="price-div">
+                            <span className="cart-item-price">
+                              <p>View</p>
+                            </span>
+                          </div>
                         </div>
-                      </div>
+                      </Link>
                     </div>
                   ))}
                 </div>
@@ -102,27 +108,30 @@ const Navbar = () => {
               <div class="top_1r text-end">
                 <ul class="social-network social-circle mb-0">
                   <li>
-                    <a href="#" class="icoRss" title="Rss">
+                    <a
+                      href="https://www.instagram.com/shahzaib_coder/"
+                      class="icoRss"
+                      title="Rss"
+                    >
                       <i class="fa fa-instagram"></i>
                     </a>
                   </li>
                   <li>
-                    <a href="#" class="icoFacebook" title="Facebook">
+                    <a
+                      href="https://www.facebook.com/MuhammadShahzaib69/"
+                      class="icoFacebook"
+                      title="Facebook"
+                    >
                       <i class="fa fa-facebook"></i>
                     </a>
                   </li>
+
                   <li>
-                    <a href="#" class="icoTwitter" title="Twitter">
-                      <i class="fa fa-twitter"></i>
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#" class="icoGoogle" title="Google +">
-                      <i class="fa fa-youtube"></i>
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#" class="icoLinkedin" title="Linkedin">
+                    <a
+                      href="https://www.linkedin.com/in/moshahzaib/"
+                      class="icoLinkedin"
+                      title="Linkedin"
+                    >
                       <i class="fa fa-linkedin"></i>
                     </a>
                   </li>

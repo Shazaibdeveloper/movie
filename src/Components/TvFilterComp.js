@@ -85,8 +85,8 @@ const TvFilterComp = () => {
 
                           <div
                             className="col-md-12 col-6 px-3 my-4"
-                            key={movie.id || <Skeleton />}
-                            id={movie.id || <Skeleton />}
+                            key={movie.id}
+                            id={movie.id}
                           >
                             <Link to={`/tvseries/${movie.id}`}>
                               <div className="trend_2im clearfix position-relative">
@@ -95,9 +95,7 @@ const TvFilterComp = () => {
                                     <figure className="effect-jazz mb-0">
                                       <a href="#">
                                         <img
-                                          src={`https://image.tmdb.org/t/p/w500/${
-                                            movie.poster_path || <Skeleton />
-                                          }`}
+                                          src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}
                                           className="w-100"
                                           alt={movie.title}
                                         />
@@ -122,9 +120,7 @@ const TvFilterComp = () => {
                                   <i className="fa fa-star"></i>
                                   <i className="fa fa-star"></i>
                                 </span>
-                                <p className="mb-0">
-                                  {movie.popularity || <Skeleton />} Views
-                                </p>
+                                <p className="mb-0">{movie.popularity} Views</p>
                               </div>
                             </Link>
                           </div>
@@ -132,7 +128,7 @@ const TvFilterComp = () => {
                       </Slider>
                     ) : (
                       // Render loading message when movies are still being fetched
-                      <Skeleton />
+                      <div>Loading...</div>
                     )}
                   </div>
                 </div>
