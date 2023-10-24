@@ -6,9 +6,12 @@ import { Link } from "react-router-dom";
 const Navbar = () => {
   const dispatch = useDispatch();
   const [searchTerm, setSearchTerm] = useState("");
-  const searchResults = useSelector((state) => state.search);
+  const searchResults = useSelector((state) => {
+    const { movies, tvSeries } = state.search.results;
+    return state.search.type === "movie" ? movies : tvSeries;
+  });
   const api_key = process.env.REACT_APP_API_KEY;
-  const type = useSelector((state) => state.type);
+  const type = useSelector((state) => state.search.type);
   useEffect(() => {
     const search = async () => {
       try {

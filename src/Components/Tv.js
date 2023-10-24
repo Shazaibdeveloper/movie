@@ -65,7 +65,7 @@ const Tv = () => {
                                         <img
                                           src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}
                                           className="w-100"
-                                          alt={movie.title}
+                                          alt={movie.name}
                                         />
                                       </a>
                                     </figure>
