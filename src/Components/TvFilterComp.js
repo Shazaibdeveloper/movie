@@ -107,7 +107,7 @@ const TvFilterComp = () => {
                               <div className="trend_2ilast bg_grey p-3 clearfix">
                                 <h5 className="title">
                                   <a className="col_red " href="#">
-                                    {movie.title}
+                                    {movie.name}
                                   </a>
                                 </h5>
                                 <p className="mb-2 dotted-para">
