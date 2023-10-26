@@ -1,4 +1,9 @@
 import React from "react";
+import img1 from "../Images/img1.jpg";
+import img2 from "../Images/img2.webp";
+import img3 from "../Images/img3.jpg";
+import pic1 from "../Images/pic1.jpg";
+import { Link } from "react-router-dom";
 
 const Footer = () => {
   return (
@@ -21,15 +26,15 @@ const Footer = () => {
                   </p>
                   <h6 className="fw-normal">
                     <i className="fa fa-map-marker fs-5 align-middle col_red me-1"></i>{" "}
-                    5311 Ceaver Sidge Td. Pakland, DE 13507
+                    Saddar, Rawalpindi
                   </h6>
                   <h6 className="fw-normal mt-3">
                     <i className="fa fa-envelope fs-5 align-middle col_red me-1"></i>{" "}
-                    info@gmail.com
+                    shahzaibmuhammad627@gmail.com
                   </h6>
                   <h6 className="fw-normal mt-3 mb-0">
                     <i className="fa fa-phone fs-5 align-middle col_red me-1"></i>{" "}
-                    +123 123 456
+                    0317 5188580
                   </h6>
                 </div>
               </div>
@@ -45,7 +50,7 @@ const Footer = () => {
                           <figure className="effect-jazz mb-0">
                             <a href="#">
                               <img
-                                src="img/4.jpg"
+                                src={img1}
                                 height="70"
                                 className="w-100"
                                 alt="abc"
@@ -61,7 +66,7 @@ const Footer = () => {
                           <figure className="effect-jazz mb-0">
                             <a href="#">
                               <img
-                                src="img/5.jpg"
+                                src={img3}
                                 height="70"
                                 className="w-100"
                                 alt="abc"
@@ -77,7 +82,7 @@ const Footer = () => {
                           <figure className="effect-jazz mb-0">
                             <a href="#">
                               <img
-                                src="img/6.jpg"
+                                src={img2}
                                 height="70"
                                 className="w-100"
                                 alt="abc"
@@ -93,7 +98,7 @@ const Footer = () => {
                           <figure className="effect-jazz mb-0">
                             <a href="#">
                               <img
-                                src="img/7.jpg"
+                                src={pic1}
                                 height="70"
                                 className="w-100"
                                 alt="abc"
@@ -111,7 +116,7 @@ const Footer = () => {
                           <figure className="effect-jazz mb-0">
                             <a href="#">
                               <img
-                                src="img/8.jpg"
+                                src={img3}
                                 height="70"
                                 className="w-100"
                                 alt="abc"
@@ -127,7 +132,7 @@ const Footer = () => {
                           <figure className="effect-jazz mb-0">
                             <a href="#">
                               <img
-                                src="img/9.jpg"
+                                src={img2}
                                 height="70"
                                 className="w-100"
                                 alt="abc"
@@ -143,7 +148,7 @@ const Footer = () => {
                           <figure className="effect-jazz mb-0">
                             <a href="#">
                               <img
-                                src="img/10.jpg"
+                                src={img1}
                                 height="70"
                                 className="w-100"
                                 alt="abc"
@@ -159,7 +164,7 @@ const Footer = () => {
                           <figure className="effect-jazz mb-0">
                             <a href="#">
                               <img
-                                src="img/11.jpg"
+                                src={pic1}
                                 height="70"
                                 className="w-100"
                                 alt="abc"
@@ -198,28 +203,31 @@ const Footer = () => {
                   </div>
                   <ul className="social-network social-circle mb-0 mt-4">
                     <li>
-                      <a href="#" className="icoRss" title="Rss">
-                        <i className="fa fa-instagram"></i>
+                      <a
+                        href="https://www.instagram.com/shahzaib_coder/"
+                        class="icoRss"
+                        title="Rss"
+                      >
+                        <i class="fa fa-instagram"></i>
                       </a>
                     </li>
                     <li>
-                      <a href="#" className="icoFacebook" title="Facebook">
-                        <i className="fa fa-facebook"></i>
+                      <a
+                        href="https://www.facebook.com/MuhammadShahzaib69/"
+                        class="icoFacebook"
+                        title="Facebook"
+                      >
+                        <i class="fa fa-facebook"></i>
                       </a>
                     </li>
+
                     <li>
-                      <a href="#" className="icoTwitter" title="Twitter">
-                        <i className="fa fa-twitter"></i>
-                      </a>
-                    </li>
-                    <li>
-                      <a href="#" className="icoGoogle" title="Google +">
-                        <i className="fa fa-youtube"></i>
-                      </a>
-                    </li>
-                    <li>
-                      <a href="#" className="icoLinkedin" title="Linkedin">
-                        <i className="fa fa-linkedin"></i>
+                      <a
+                        href="https://www.linkedin.com/in/moshahzaib/"
+                        class="icoLinkedin"
+                        title="Linkedin"
+                      >
+                        <i class="fa fa-linkedin"></i>
                       </a>
                     </li>
                   </ul>
@@ -236,9 +244,12 @@ const Footer = () => {
             <div className="col-md-8">
               <div className="footer_1l">
                 <p className="mb-0">
-                  © 2013 Your Website Name. All Rights Reserved | Design by{" "}
-                  <a className="col_red" href="http://www.templateonweb.com">
-                    TemplateOnWeb
+                  © 2013 Planet. All Rights Reserved | Design by
+                  <a
+                    className="col_red"
+                    href="https://www.linkedin.com/in/moshahzaib/"
+                  >
+                    Muhammad Shahzaib
                   </a>
                 </p>
               </div>
@@ -247,22 +258,14 @@ const Footer = () => {
               <div className="footer_1r">
                 <ul className="mb-0">
                   <li className="d-inline-block me-2">
-                    <a href="#">Home</a>
+                    <Link to="/home">Home</Link>
                   </li>
+
                   <li className="d-inline-block me-2">
-                    <a href="#">Features</a>
-                  </li>
-                  <li className="d-inline-block me-2">
-                    <a href="#">Pages</a>
-                  </li>
-                  <li className="d-inline-block me-2">
-                    <a href="#">Portfolio</a>
-                  </li>
-                  <li className="d-inline-block me-2">
-                    <a href="#">Blog</a>
+                    <Link to="/movies">Movies</Link>
                   </li>
                   <li className="d-inline-block">
-                    <a href="#">Contact</a>
+                    <Link to="/">tvseries</Link>
                   </li>
                 </ul>
               </div>
