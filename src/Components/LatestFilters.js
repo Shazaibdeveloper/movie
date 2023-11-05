@@ -12,9 +12,9 @@ const LatestFilters = () => {
 
   return (
     <>
-      <div class="heading filters">
+      <div className="heading filters">
         <div
-          class="btn-group btn-group-toggle btn-colors"
+          className="btn-group btn-group-toggle btn-colors"
           data-toggle="buttons"
         >
           <button

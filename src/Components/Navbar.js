@@ -43,19 +43,19 @@ const Navbar = () => {
   return (
     <>
       <section id="top">
-        <div class="container">
-          <div class="row top_1">
-            <div class="col-md-2">
-              <div class="top_1l pt-1">
-                <h3 class="mb-0">
-                  <Link class="text-white" to="/">
-                    <i class="fa fa-video-camera col_red me-1"></i> Planet
+        <div className="container">
+          <div className="row top_1">
+            <div className="col-md-2">
+              <div className="top_1l pt-1">
+                <h3 className="mb-0">
+                  <Link className="text-white" to="/">
+                    <i className="fa fa-video-camera col_red me-1"></i> Planet
                   </Link>
                 </h3>
               </div>
             </div>
-            <div class="col-md-7">
-              <div class="top_1m position-relative">
+            <div className="col-md-7">
+              <div className="top_1m position-relative">
                 <div className="input-group">
                   <input
                     type="text"
@@ -107,35 +107,35 @@ const Navbar = () => {
                 </div>
               </div>
             </div>
-            <div class="col-md-3">
-              <div class="top_1r text-end">
-                <ul class="social-network social-circle mb-0">
+            <div className="col-md-3">
+              <div className="top_1r text-end">
+                <ul className="social-network social-circle mb-0">
                   <li>
                     <a
                       href="https://www.instagram.com/shahzaib_coder/"
-                      class="icoRss"
+                      className="icoRss"
                       title="Rss"
                     >
-                      <i class="fa fa-instagram"></i>
+                      <i className="fa fa-instagram"></i>
                     </a>
                   </li>
                   <li>
                     <a
                       href="https://www.facebook.com/MuhammadShahzaib69/"
-                      class="icoFacebook"
+                      className="icoFacebook"
                       title="Facebook"
                     >
-                      <i class="fa fa-facebook"></i>
+                      <i className="fa fa-facebook"></i>
                     </a>
                   </li>
 
                   <li>
                     <a
                       href="https://www.linkedin.com/in/moshahzaib/"
-                      class="icoLinkedin"
+                      className="icoLinkedin"
                       title="Linkedin"
                     >
-                      <i class="fa fa-linkedin"></i>
+                      <i className="fa fa-linkedin"></i>
                     </a>
                   </li>
                 </ul>
@@ -146,13 +146,16 @@ const Navbar = () => {
       </section>
 
       <section id="header">
-        <nav class="navbar navbar-expand-md navbar-light" id="navbar_sticky">
-          <div class="container">
-            <a class="navbar-brand text-white fw-bold" href="index.html">
-              <i class="fa fa-video-camera col_red me-1"></i> Planet
+        <nav
+          className="navbar navbar-expand-md navbar-light"
+          id="navbar_sticky"
+        >
+          <div className="container">
+            <a className="navbar-brand text-white fw-bold" href="index.html">
+              <i className="fa fa-video-camera col_red me-1"></i> Planet
             </a>
             <button
-              class="navbar-toggler"
+              className="navbar-toggler"
               type="button"
               data-bs-toggle="collapse"
               data-bs-target="#navbarSupportedContent"
@@ -160,23 +163,26 @@ const Navbar = () => {
               aria-expanded="false"
               aria-label="Toggle navigation"
             >
-              <span class="navbar-toggler-icon"></span>
+              <span className="navbar-toggler-icon"></span>
             </button>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-              <ul class="navbar-nav mb-0">
-                <li class="nav-item">
-                  <Link class="nav-link " to="/">
+            <div
+              className="collapse navbar-collapse"
+              id="navbarSupportedContent"
+            >
+              <ul className="navbar-nav mb-0">
+                <li className="nav-item">
+                  <Link className="nav-link " to="/">
                     Home
                   </Link>
                 </li>
-                <li class="nav-item">
-                  <Link class="nav-link" to="/movies">
+                <li className="nav-item">
+                  <Link className="nav-link" to="/movies">
                     Movies
                   </Link>
                 </li>
 
-                <li class="nav-item">
-                  <Link class="nav-link" to="/tvseries">
+                <li className="nav-item">
+                  <Link className="nav-link" to="/tvseries">
                     Tv Series
                   </Link>
                 </li>

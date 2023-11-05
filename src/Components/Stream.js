@@ -67,21 +67,21 @@ const Stream = () => {
 
   return (
     <>
-      <section id="stream" class="pb-5 pt-4">
-        <div class="container">
-          <div class="row trend_1">
-            <div class="col-md-10">
-              <div class="trend_1l">
-                <h4 class="mb-0">
-                  <i class="fa fa-youtube-play align-middle col_red me-1"></i>{" "}
-                  Movie <span class="col_red">Streaming Services</span>
+      <section id="stream" className="pb-5 pt-4">
+        <div className="container">
+          <div className="row trend_1">
+            <div className="col-md-10">
+              <div className="trend_1l">
+                <h4 className="mb-0">
+                  <i className="fa fa-youtube-play align-middle col_red me-1"></i>{" "}
+                  Movie <span className="col_red">Streaming Services</span>
                 </h4>
               </div>
             </div>
-            <div class="col">
-              <div class="trend_1r text-end">
-                <h6 class="mb-0">
-                  <a class="button" href="#">
+            <div className="col">
+              <div className="trend_1r text-end">
+                <h6 className="mb-0">
+                  <a className="button" href="#">
                     {" "}
                     View All
                   </a>
@@ -89,15 +89,15 @@ const Stream = () => {
               </div>
             </div>
           </div>
-          <div class="row trend_2 mt-4">
+          <div className="row trend_2 mt-4">
             <div
               id="carouselExampleCaptions4"
-              class="carousel slide"
+              className="carousel slide"
               data-bs-ride="carousel"
             >
-              <div class="carousel-inner">
-                <div class="carousel-item active">
-                  <div class="trend_2i row">
+              <div className="carousel-inner">
+                <div className="carousel-item active">
+                  <div className="trend_2i row">
                     <div className="trend_2i row">
                       {moviesData === null ? (
                         // Render a loading message or spinner while data is being fetched
@@ -106,12 +106,16 @@ const Stream = () => {
                         // Render movie data once it's available
                         <Slider {...sliderSettings}>
                           {moviesData.results.map((movie) => (
-                            <div class="col px-3" key={movie.id} id={movie.id}>
-                              <div class="trend_2im clearfix position-relative">
+                            <div
+                              className="col px-3"
+                              key={movie.id}
+                              id={movie.id}
+                            >
+                              <div className="trend_2im clearfix position-relative">
                                 <Link to={`/movies/${movie.id}`}>
-                                  <div class="trend_2im1 clearfix">
-                                    <div class="grid">
-                                      <figure class="effect-jazz mb-0">
+                                  <div className="trend_2im1 clearfix">
+                                    <div className="grid">
+                                      <figure className="effect-jazz mb-0">
                                         <a href="#">
                                           <img
                                             src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}
@@ -122,21 +126,21 @@ const Stream = () => {
                                       </figure>
                                     </div>
                                   </div>
-                                  <div class="trend_2im2 clearfix  position-absolute w-100 bottom-0">
-                                    <div class="wrapper">
+                                  <div className="trend_2im2 clearfix  position-absolute w-100 bottom-0">
+                                    <div className="wrapper">
                                       <h5 className="title">
-                                        <a class="col_red" href="#">
+                                        <a className="col_red" href="#">
                                           {movie.title}
                                         </a>
                                       </h5>
-                                      <span class="col_red">
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
+                                      <span className="col_red">
+                                        <i className="fa fa-star"></i>
+                                        <i className="fa fa-star"></i>
+                                        <i className="fa fa-star"></i>
+                                        <i className="fa fa-star"></i>
+                                        <i className="fa fa-star"></i>
                                       </span>
-                                      <p class="mb-0">
+                                      <p className="mb-0">
                                         {movie.popularity} Views
                                       </p>
                                     </div>

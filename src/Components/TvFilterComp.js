@@ -88,25 +88,25 @@ const TvFilterComp = () => {
 
   return (
     <>
-      <section id="popular" class="pt-4 pb-5 bg_grey">
-        <div class="container">
-          <div class="row trend_1">
-            <div class="col-md-12">
-              <div class="trend_1l">
-                <h4 class="mb-0">
-                  <i class="fa fa-youtube-play align-middle col_red me-1"></i>{" "}
-                  Trending <span class="col_red">Series</span>
+      <section id="popular" className="pt-4 pb-5 bg_grey">
+        <div className="container">
+          <div className="row trend_1">
+            <div className="col-md-12">
+              <div className="trend_1l">
+                <h4 className="mb-0">
+                  <i className="fa fa-youtube-play align-middle col_red me-1"></i>{" "}
+                  Trending <span className="col_red">Series</span>
                 </h4>
               </div>
             </div>
           </div>
           <TvFilterbtn />
 
-          <div class="popular_2 row mt-4">
-            <div class="tab-content">
-              <div class="tab-pane active" id="home">
-                <div class="popular_2i row">
-                  <div class="col-md-12">
+          <div className="popular_2 row mt-4">
+            <div className="tab-content">
+              <div className="tab-pane active" id="home">
+                <div className="popular_2i row">
+                  <div className="col-md-12">
                     {movies ? (
                       <Slider {...sliderSettings}>
                         {movies.map((movie) => (

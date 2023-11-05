@@ -67,21 +67,21 @@ const Upcomming = () => {
 
   return (
     <>
-      <section id="upcome" class="pt-4 pb-5">
-        <div class="container">
-          <div class="row trend_1">
-            <div class="col-md-10">
-              <div class="trend_1l">
-                <h4 class="mb-0">
-                  <i class="fa fa-youtube-play align-middle col_red me-1"></i>{" "}
-                  Upcoming <span class="col_red">Events</span>
+      <section id="upcome" className="pt-4 pb-5">
+        <div className="container">
+          <div className="row trend_1">
+            <div className="col-md-10">
+              <div className="trend_1l">
+                <h4 className="mb-0">
+                  <i className="fa fa-youtube-play align-middle col_red me-1"></i>{" "}
+                  Upcoming <span className="col_red">Events</span>
                 </h4>
               </div>
             </div>
-            <div class="col">
-              <div class="trend_1r text-end">
-                <h6 class="mb-0">
-                  <a class="button" href="#">
+            <div className="col">
+              <div className="trend_1r text-end">
+                <h6 className="mb-0">
+                  <a className="button" href="#">
                     {" "}
                     View All
                   </a>
@@ -89,13 +89,13 @@ const Upcomming = () => {
               </div>
             </div>
           </div>
-          <div class="row trend_2 mt-4">
+          <div className="row trend_2 mt-4">
             <div
               id="carouselExampleCaptions2"
-              class="carousel slide"
+              className="carousel slide"
               data-bs-ride="carousel"
             >
-              <div class="trend_2i row">
+              <div className="trend_2i row">
                 {moviesData === null ? (
                   // Render a loading message or spinner while data is being fetched
                   <div>Loading...</div>
@@ -104,12 +104,16 @@ const Upcomming = () => {
                   <Slider {...sliderSettings}>
                     {moviesData.results.map((movie) => (
                       // Render each movie from the API
-                      <div class="col-md-12 px-3" key={movie.id} id={movie.id}>
+                      <div
+                        className="col-md-12 px-3"
+                        key={movie.id}
+                        id={movie.id}
+                      >
                         <Link to={`/movies/${movie.id}`}>
-                          <div class="trend_2im clearfix position-relative">
-                            <div class="trend_2im1 clearfix">
-                              <div class="grid">
-                                <figure class="effect-jazz mb-0">
+                          <div className="trend_2im clearfix position-relative">
+                            <div className="trend_2im1 clearfix">
+                              <div className="grid">
+                                <figure className="effect-jazz mb-0">
                                   <a href="#">
                                     <img
                                       src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}
@@ -120,29 +124,29 @@ const Upcomming = () => {
                                 </figure>
                               </div>
                             </div>
-                            <div class="trend_2im2 clearfix text-center position-absolute w-100 top-0">
-                              <span class="fs-1">
-                                <a class="col_red" href="#">
-                                  <i class="fa fa-youtube-play"></i>
+                            <div className="trend_2im2 clearfix text-center position-absolute w-100 top-0">
+                              <span className="fs-1">
+                                <a className="col_red" href="#">
+                                  <i className="fa fa-youtube-play"></i>
                                 </a>
                               </span>
                             </div>
                           </div>
-                          <div class="trend_2ilast bg_grey p-3 clearfix">
+                          <div className="trend_2ilast bg_grey p-3 clearfix">
                             <h5 className="title">
-                              <a class="col_red" href="#">
+                              <a className="col_red" href="#">
                                 {movie.title}
                               </a>
                             </h5>
-                            <p class="mb-2 dotted-para">{movie.overview}</p>
-                            <span class="col_red">
-                              <i class="fa fa-star"></i>
-                              <i class="fa fa-star"></i>
-                              <i class="fa fa-star"></i>
-                              <i class="fa fa-star"></i>
-                              <i class="fa fa-star"></i>
+                            <p className="mb-2 dotted-para">{movie.overview}</p>
+                            <span className="col_red">
+                              <i className="fa fa-star"></i>
+                              <i className="fa fa-star"></i>
+                              <i className="fa fa-star"></i>
+                              <i className="fa fa-star"></i>
+                              <i className="fa fa-star"></i>
                             </span>
-                            <p class="mb-0">{movie.popularity} Views</p>
+                            <p className="mb-0">{movie.popularity} Views</p>
                           </div>
                         </Link>
                       </div>

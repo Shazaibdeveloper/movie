@@ -144,7 +144,9 @@ height: 100% !important;
     text-decoration: none;
     background-color: transparent;
 }
-
+button.slick-arrow {
+  display: none !important;
+}
  
 a.col_red i {
   display: none;
