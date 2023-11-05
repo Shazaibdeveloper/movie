@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import TvFilterbtn from "./TvFilterbtn";
 import Slider from "react-slick";
 import { selectFilter, selectMovies, setMovies } from "../Redux/TvFilter";
@@ -19,7 +19,7 @@ const TvFilterComp = () => {
   const dispatch = useDispatch();
   const movies = useSelector(selectMovies);
   const filter = useSelector(selectFilter);
-  var settings = {
+  const [sliderSettings, setSliderSettings] = useState({
     dots: true,
     pauseOnHover: true,
     infinite: true,
@@ -27,7 +27,36 @@ const TvFilterComp = () => {
     autoplay: true,
     slidesToShow: 4,
     slidesToScroll: 4,
-  };
+  });
+
+  useEffect(() => {
+    const updateSlidesToShow = () => {
+      const screenWidth = window.innerWidth;
+      let slidesToShow = 4; // Default number of slides to show
+
+      if (screenWidth <= 768) {
+        slidesToShow = 2;
+      } else if (screenWidth <= 992) {
+        slidesToShow = 3;
+      }
+
+      setSliderSettings({
+        ...sliderSettings,
+        slidesToShow: slidesToShow,
+      });
+    };
+
+    // Call the function on initial load
+    updateSlidesToShow();
+
+    // Add event listener to update slidesToShow on window resize
+    window.addEventListener("resize", updateSlidesToShow);
+
+    // Clean up the event listener on component unmount
+    return () => {
+      window.removeEventListener("resize", updateSlidesToShow);
+    };
+  }, []);
 
   useEffect(() => {
     const fetchMovies = async () => {
@@ -79,7 +108,7 @@ const TvFilterComp = () => {
                 <div class="popular_2i row">
                   <div class="col-md-12">
                     {movies ? (
-                      <Slider {...settings}>
+                      <Slider {...sliderSettings}>
                         {movies.map((movie) => (
                           // Render each movie from the API
 

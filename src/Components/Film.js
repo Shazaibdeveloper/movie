@@ -17,7 +17,7 @@ const Film = () => {
   const dispatch = useDispatch();
   const movies = useSelector(selectMovies);
   const filter = useSelector(selectFilter);
-  var settings = {
+  const [sliderSettings, setSliderSettings] = useState({
     dots: true,
     pauseOnHover: true,
     infinite: true,
@@ -25,8 +25,36 @@ const Film = () => {
     autoplay: true,
     slidesToShow: 4,
     slidesToScroll: 4,
-  };
+  });
 
+  useEffect(() => {
+    const updateSlidesToShow = () => {
+      const screenWidth = window.innerWidth;
+      let slidesToShow = 4; // Default number of slides to show
+
+      if (screenWidth <= 768) {
+        slidesToShow = 2;
+      } else if (screenWidth <= 992) {
+        slidesToShow = 3;
+      }
+
+      setSliderSettings({
+        ...sliderSettings,
+        slidesToShow: slidesToShow,
+      });
+    };
+
+    // Call the function on initial load
+    updateSlidesToShow();
+
+    // Add event listener to update slidesToShow on window resize
+    window.addEventListener("resize", updateSlidesToShow);
+
+    // Clean up the event listener on component unmount
+    return () => {
+      window.removeEventListener("resize", updateSlidesToShow);
+    };
+  }, []);
   useEffect(() => {
     const fetchMovies = async () => {
       try {
@@ -60,7 +88,7 @@ const Film = () => {
       <section id="trend" className="pt-4 pb-5">
         <div className="container">
           <div className="row trend_1">
-            <div className="col-md-6 col-6">
+            <div className="col-md-10">
               <div className="trend_1l d-flex">
                 <h4 className="mb-0">
                   <i className="fa fa-youtube-play align-middle col_red me-1"></i>{" "}
@@ -69,7 +97,7 @@ const Film = () => {
                 <LatestFilters />
               </div>
             </div>
-            <div className="col-md-6 col-6">
+            <div className="col">
               <div className="trend_1r text-end">
                 <h6 className="mb-0">
                   <a className="button" href="#">
@@ -91,7 +119,7 @@ const Film = () => {
                 <div className="carousel-item active">
                   <div className="trend_2i row">
                     {movies ? (
-                      <Slider {...settings}>
+                      <Slider {...sliderSettings}>
                         {movies.map((movie) => (
                           // Render each movie from the API
                           <div

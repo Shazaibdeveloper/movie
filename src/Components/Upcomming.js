@@ -4,15 +4,44 @@ import Slider from "react-slick";
 
 const Upcomming = () => {
   const [moviesData, setMoviesData] = useState(null); // Initialize state to store fetched data
-  var settings = {
+  const [sliderSettings, setSliderSettings] = useState({
     dots: true,
     pauseOnHover: true,
     infinite: true,
     speed: 3000,
     autoplay: true,
-    slidesToShow: 3,
-    slidesToScroll: 3,
-  };
+    slidesToShow: 4,
+    slidesToScroll: 4,
+  });
+
+  useEffect(() => {
+    const updateSlidesToShow = () => {
+      const screenWidth = window.innerWidth;
+      let slidesToShow = 4; // Default number of slides to show
+
+      if (screenWidth <= 768) {
+        slidesToShow = 2;
+      } else if (screenWidth <= 992) {
+        slidesToShow = 3;
+      }
+
+      setSliderSettings({
+        ...sliderSettings,
+        slidesToShow: slidesToShow,
+      });
+    };
+
+    // Call the function on initial load
+    updateSlidesToShow();
+
+    // Add event listener to update slidesToShow on window resize
+    window.addEventListener("resize", updateSlidesToShow);
+
+    // Clean up the event listener on component unmount
+    return () => {
+      window.removeEventListener("resize", updateSlidesToShow);
+    };
+  }, []);
   async function fetchMovies() {
     const api_key = process.env.REACT_APP_API_KEY;
     const apiUrl = `https://api.themoviedb.org/3/movie/upcoming?api_key=${api_key}`;
@@ -41,7 +70,7 @@ const Upcomming = () => {
       <section id="upcome" class="pt-4 pb-5">
         <div class="container">
           <div class="row trend_1">
-            <div class="col-md-6 col-6">
+            <div class="col-md-10">
               <div class="trend_1l">
                 <h4 class="mb-0">
                   <i class="fa fa-youtube-play align-middle col_red me-1"></i>{" "}
@@ -49,7 +78,7 @@ const Upcomming = () => {
                 </h4>
               </div>
             </div>
-            <div class="col-md-6 col-6">
+            <div class="col">
               <div class="trend_1r text-end">
                 <h6 class="mb-0">
                   <a class="button" href="#">
@@ -72,7 +101,7 @@ const Upcomming = () => {
                   <div>Loading...</div>
                 ) : (
                   // Render movie data once it's available
-                  <Slider {...settings}>
+                  <Slider {...sliderSettings}>
                     {moviesData.results.map((movie) => (
                       // Render each movie from the API
                       <div class="col-md-12 px-3" key={movie.id} id={movie.id}>

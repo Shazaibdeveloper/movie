@@ -146,7 +146,9 @@ height: 100% !important;
 }
 
  
-
+a.col_red i {
+  display: none;
+}
 .cart-item {
   display: flex;
   align-items: center;
@@ -186,7 +188,27 @@ section#footer img {
   object-fit: cover;
 }
 
+.slider-container {
+  max-width: 80%; /* Set a maximum width for the slider container */
+  margin: 0 auto; /* Center the slider container */
+}
 
+@media (max-width: 768px) {
+  .btn-group {
+    margin: 16px 0 0;
+}
+ 
+  .trend_1l.d-flex {
+    flex-direction: column;
+}
+  a.button {
+    display: none;
+}
+   
+  .slider-container {
+    max-width: 100%; /* Make the slider container full width on smaller screens */
+  }
+}
 
 
 
