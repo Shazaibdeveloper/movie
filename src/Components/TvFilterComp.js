@@ -35,9 +35,9 @@ const TvFilterComp = () => {
       let slidesToShow = 4; // Default number of slides to show
 
       if (screenWidth <= 768) {
-        slidesToShow = 2;
+        slidesToShow = 1;
       } else if (screenWidth <= 992) {
-        slidesToShow = 3;
+        slidesToShow = 2;
       }
 
       setSliderSettings({

@@ -98,7 +98,7 @@ const Detail = ({ type }) => {
       <section className="container detail-section my-4">
         <div className="detail-main-div p-5">
           <div className="row">
-            <div className="col-4">
+            <div className="col-sm-12 col-lg-4">
               <div className="detail-img-div">
                 <img
                   src={`https://image.tmdb.org/t/p/w500/${poster_path}`}
@@ -107,7 +107,7 @@ const Detail = ({ type }) => {
                 />
               </div>
             </div>
-            <div className="col-8">
+            <div className="col-sm-12 col-lg-8">
               <div className="title">
                 <h2>{name || title}</h2>
               </div>

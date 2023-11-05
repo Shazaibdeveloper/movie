@@ -17,12 +17,12 @@ const Upcomming = () => {
   useEffect(() => {
     const updateSlidesToShow = () => {
       const screenWidth = window.innerWidth;
-      let slidesToShow = 4; // Default number of slides to show
+      let slidesToShow = 3; // Default number of slides to show
 
       if (screenWidth <= 768) {
-        slidesToShow = 2;
+        slidesToShow = 1;
       } else if (screenWidth <= 992) {
-        slidesToShow = 3;
+        slidesToShow = 2;
       }
 
       setSliderSettings({
